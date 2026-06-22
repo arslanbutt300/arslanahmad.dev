@@ -1,0 +1,123 @@
+---
+const services = [
+  {
+    icon: '📱',
+    title: 'iOS Development',
+    description:
+      'Full-cycle native iOS app development. SwiftUI, UIKit, Objective-C. From architecture to App Store submission.',
+    tags: ['SwiftUI', 'UIKit', 'Obj-C'],
+  },
+  {
+    icon: '🏗️',
+    title: 'App Architecture',
+    description:
+      'Clean MVVM architecture, SwiftData modelling, Supabase backend integration, offline-first data strategies.',
+    tags: ['MVVM', 'SwiftData', 'Supabase'],
+  },
+  {
+    icon: '🤖',
+    title: 'AI-Assisted Dev',
+    description:
+      'Accelerated development using Claude and ChatGPT as dev partners. Build faster, ship smarter, iterate daily.',
+    tags: ['Claude API', 'ChatGPT', 'MCP'],
+  },
+  {
+    icon: '🗺️',
+    title: 'Maps & Location',
+    description:
+      'GPS tracking, Google Maps SDK integration, route recording, real-time navigation, geofencing, CoreLocation.',
+    tags: ['CoreLocation', 'Google Maps', 'GPS'],
+  },
+  {
+    icon: '🔔',
+    title: 'Push Notifications',
+    description:
+      'Firebase Cloud Messaging, APNs, background fetch, local notifications, Live Activities on iOS 16+.',
+    tags: ['Firebase', 'APNs', 'Live Activities'],
+  },
+  {
+    icon: '🔒',
+    title: 'Auth & Backend',
+    description:
+      'Supabase Auth flows — email, Apple Sign In, Google Sign In. Row-level security, edge functions, real-time.',
+    tags: ['Supabase', 'Sign in with Apple', 'Google OAuth'],
+  },
+];
+---
+
+<section
+  id="services"
+  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+>
+  <div class="reveal" style="margin-bottom: 56px;">
+    <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+      Services
+    </div>
+    <h2 style="font-size: clamp(32px, 4vw, 48px);">What I Can Build For You</h2>
+    <p style="color: var(--text-2); font-size: 15px; margin-top: 8px; max-width: 520px;">
+      Focused on iOS development and AI-powered workflows. Available for freelance, consulting, and full project builds.
+    </p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    {services.map((s, i) => (
+      <div
+        class="service-card reveal glass"
+        style={`
+          border-radius: 14px;
+          padding: 28px 24px;
+          transition: transform 0.2s ease, border-color 0.2s ease;
+          animation-delay: ${i * 0.08}s;
+        `}
+      >
+        <div style="font-size: 32px; margin-bottom: 14px;">{s.icon}</div>
+        <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--text-1);">
+          {s.title}
+        </h3>
+        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px;">
+          {s.description}
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+          {s.tags.map(t => (
+            <span style="
+              background: rgba(127,119,221,0.07);
+              border: 1px solid rgba(127,119,221,0.15);
+              border-radius: 4px;
+              padding: 3px 8px;
+              font-size: 10px;
+              color: var(--accent);
+            ">{t}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <div class="reveal" style="text-align: center; margin-top: 60px;">
+    <a
+      href="/#contact"
+      style="
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #fff;
+        padding: 16px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        transition: opacity 0.2s, transform 0.2s;
+        letter-spacing: 0.01em;
+      "
+      class="cta-btn"
+    >
+      Let's Work Together →
+    </a>
+  </div>
+</section>
+
+<style>
+  .service-card:hover { transform: translateY(-3px); }
+  .cta-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+</style>

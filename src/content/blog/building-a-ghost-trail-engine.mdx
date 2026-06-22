@@ -1,0 +1,57 @@
+---
+title: "Building a Ghost Trail Engine with CoreLocation"
+description: "How I built real-time ghost navigation for FootSteps — a second 'ghost' marker that replays your exact path while you walk, using CoreLocation waypoints and Google Maps SDK."
+pubDate: 2026-06-15
+emoji: "👻"
+tags: ["iOS", "SwiftUI", "CoreLocation"]
+readTime: "6 min read"
+---
+
+Building a ghost trail feature for a GPS app sounds complex, but the core idea is simple: store your original path as waypoints, then replay the ghost position in real time as the user walks.
+
+## The Core Concept
+
+When you record a trail in FootSteps, every GPS coordinate is saved as a `Waypoint` in SwiftData with a timestamp. The ghost trail replay uses these timestamps to calculate where the "ghost" should be at any given moment.
+
+```swift
+struct Waypoint {
+    let coordinate: CLLocationCoordinate2D
+    let timestamp: Date
+    let altitude: Double
+}
+```
+
+## Interpolating Position
+
+The ghost doesn't jump between waypoints — it smoothly interpolates between them using linear interpolation on coordinates.
+
+```swift
+func ghostPosition(at elapsed: TimeInterval, waypoints: [Waypoint]) -> CLLocationCoordinate2D? {
+    guard let first = waypoints.first else { return nil }
+    let targetTime = first.timestamp.addingTimeInterval(elapsed)
+
+    for i in 0..<waypoints.count - 1 {
+        let a = waypoints[i]
+        let b = waypoints[i + 1]
+        if targetTime >= a.timestamp && targetTime < b.timestamp {
+            let t = targetTime.timeIntervalSince(a.timestamp) /
+                    b.timestamp.timeIntervalSince(a.timestamp)
+            return CLLocationCoordinate2D(
+                latitude: a.coordinate.latitude + t * (b.coordinate.latitude - a.coordinate.latitude),
+                longitude: a.coordinate.longitude + t * (b.coordinate.longitude - a.coordinate.longitude)
+            )
+        }
+    }
+    return waypoints.last?.coordinate
+}
+```
+
+## The Animated Marker
+
+The ghost marker on the map is a custom `GhostMarkerView` — it floats up and down using a CSS-style animation in UIKit, has a pulsing ring to indicate it's "alive," and blinks to give personality.
+
+## What I Learned
+
+The trickiest part was keeping the ghost marker in sync with Lenis scroll (joke — that's the web, not iOS). The real challenge was handling GPS accuracy spikes — if the user pauses, GPS drift can make the ghost jump 20m randomly. The fix: ignore waypoints where accuracy > 15m when storing the trail.
+
+This feature alone drove most of our positive App Store reviews.

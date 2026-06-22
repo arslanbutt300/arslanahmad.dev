@@ -1,0 +1,91 @@
+---
+const navLinks = [
+  { href: '/#about', label: 'About' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/#services', label: 'Services' },
+  { href: '/labs', label: 'Labs' },
+];
+---
+
+<nav
+  id="main-nav"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0 48px;
+    height: 64px;
+    background: rgba(7, 7, 13, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+  "
+>
+  <!-- Logo -->
+  <a href="/" style="font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-1);">
+    arslan<span style="color: var(--accent);">.</span><span style="color: var(--text-2);">dev</span>
+  </a>
+
+  <!-- Nav links -->
+  <div style="display: flex; gap: 32px; align-items: center;">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        style="
+          font-size: 13px;
+          font-weight: 500;
+          color: var(--text-2);
+          transition: color 0.2s ease;
+          letter-spacing: 0.01em;
+        "
+        class="nav-link"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+
+  <!-- CTA -->
+  <a
+    href="/#contact"
+    style="
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      letter-spacing: 0.01em;
+    "
+    class="nav-cta"
+  >
+    Hire Me →
+  </a>
+</nav>
+
+<!-- Nav scroll behavior + hover states -->
+<style>
+  .nav-link:hover { color: var(--text-1) !important; }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+</style>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.classList.add('nav-scrolled');
+    } else {
+      nav.classList.remove('nav-scrolled');
+    }
+  });
+</script>

@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const placeholders = [
+  {
+    emoji: '👻',
+    tag: 'iOS · SwiftUI',
+    title: 'Building a Ghost Trail Engine with CoreLocation',
+    date: 'June 2026',
+    readTime: '6 min read',
+    href: '/blog',
+  },
+  {
+    emoji: '🤖',
+    tag: 'AI · Workflow',
+    title: 'How I Ship 3× Faster Using Claude as My Dev Partner',
+    date: 'June 2026',
+    readTime: '8 min read',
+    href: '/blog',
+  },
+  {
+    emoji: '📦',
+    tag: 'SwiftData',
+    title: 'SwiftData vs CoreData: What They Don\'t Tell You',
+    date: 'May 2026',
+    readTime: '7 min read',
+    href: '/blog',
+  },
+];
+
+const displayPosts = posts.length > 0 ? posts : null;
+---
+
+<section
+  id="blog"
+  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+>
+  <div class="reveal" style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px;">
+    <div>
+      <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+        Writing
+      </div>
+      <h2 style="font-size: clamp(28px, 3.5vw, 42px);">Latest Articles</h2>
+    </div>
+    <a href="/blog" style="font-size: 13px; color: var(--accent); font-weight: 600; transition: opacity 0.2s;" class="view-all-link">
+      View all →
+    </a>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    {displayPosts
+      ? displayPosts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="blog-card reveal"
+            style="
+              border: 1px solid var(--border);
+              border-radius: 12px;
+              overflow: hidden;
+              display: block;
+              transition: border-color 0.2s ease, transform 0.2s ease;
+              text-decoration: none;
+            "
+          >
+            <div style="
+              height: 100px;
+              background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 36px;
+            ">
+              {post.data.emoji ?? '📝'}
+            </div>
+            <div style="padding: 16px;">
+              <div style="font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+                {post.data.tags?.[0] ?? 'iOS'}
+              </div>
+              <h3 style="font-size: 14px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; color: var(--text-1);">
+                {post.data.title}
+              </h3>
+              <div style="font-size: 11px; color: var(--text-3);">
+                {post.data.readTime} · {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              </div>
+            </div>
+          </a>
+        ))
+      : placeholders.map((p) => (
+          <a
+            href={p.href}
+            class="blog-card reveal"
+            style="
+              border: 1px solid var(--border);
+              border-radius: 12px;
+              overflow: hidden;
+              display: block;
+              transition: border-color 0.2s ease, transform 0.2s ease;
+            "
+          >
+            <div style="
+              height: 100px;
+              background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 36px;
+            ">
+              {p.emoji}
+            </div>
+            <div style="padding: 16px;">
+              <div style="font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+                {p.tag}
+              </div>
+              <h3 style="font-size: 14px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; color: var(--text-1);">
+                {p.title}
+              </h3>
+              <div style="font-size: 11px; color: var(--text-3);">
+                {p.readTime} · {p.date}
+              </div>
+            </div>
+          </a>
+        ))
+    }
+  </div>
+</section>
+
+<style>
+  .blog-card:hover {
+    border-color: rgba(127, 119, 221, 0.3) !important;
+    transform: translateY(-2px);
+  }
+  .view-all-link:hover { opacity: 0.7; }
+</style>

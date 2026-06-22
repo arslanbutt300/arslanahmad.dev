@@ -1,0 +1,145 @@
+---
+---
+
+<section
+  id="contact"
+  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+>
+  <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+    <div class="reveal">
+      <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+        Contact
+      </div>
+      <h2 style="font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px;">Let's Build Something.</h2>
+      <p style="color: var(--text-2); font-size: 15px; line-height: 1.75; margin-bottom: 48px;">
+        Available for iOS freelance projects, consulting, and technical collaborations.
+        Reach out and I'll reply within 24 hours.
+      </p>
+    </div>
+
+    <!-- Contact form (Formspree — replace YOUR_FORM_ID) -->
+    <form
+      class="reveal"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      style="display: flex; flex-direction: column; gap: 16px; text-align: left;"
+    >
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div>
+          <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Arslan Ahmad"
+            required
+            style="
+              width: 100%;
+              background: var(--bg-2);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              padding: 12px 14px;
+              font-size: 14px;
+              color: var(--text-1);
+              outline: none;
+              transition: border-color 0.2s;
+              font-family: inherit;
+            "
+            class="form-input"
+          />
+        </div>
+        <div>
+          <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="hello@example.com"
+            required
+            style="
+              width: 100%;
+              background: var(--bg-2);
+              border: 1px solid var(--border);
+              border-radius: 8px;
+              padding: 12px 14px;
+              font-size: 14px;
+              color: var(--text-1);
+              outline: none;
+              transition: border-color 0.2s;
+              font-family: inherit;
+            "
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Message</label>
+        <textarea
+          name="message"
+          placeholder="Tell me about your project..."
+          rows="5"
+          required
+          style="
+            width: 100%;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: var(--text-1);
+            outline: none;
+            transition: border-color 0.2s;
+            font-family: inherit;
+            resize: vertical;
+          "
+          class="form-input"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        style="
+          background: var(--accent);
+          color: #fff;
+          padding: 14px 28px;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 700;
+          border: none;
+          cursor: pointer;
+          transition: opacity 0.2s, transform 0.2s;
+          font-family: inherit;
+          letter-spacing: 0.01em;
+          width: 100%;
+        "
+        class="submit-btn"
+      >
+        Send Message →
+      </button>
+    </form>
+
+    <!-- Social links -->
+    <div class="reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 48px;">
+      {[
+        { label: 'GitHub', href: 'https://github.com/arslanbutt300' },
+        { label: 'LinkedIn', href: '#' },
+        { label: 'Twitter/X', href: '#' },
+        { label: 'Email', href: 'mailto:hello@arslanahmad.dev' },
+      ].map(link => (
+        <a
+          href={link.href}
+          style="font-size: 13px; color: var(--text-3); transition: color 0.2s;"
+          class="social-link"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .form-input:focus { border-color: var(--accent) !important; }
+  .form-input::placeholder { color: var(--text-3); }
+  .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .social-link:hover { color: var(--accent) !important; }
+</style>

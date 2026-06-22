@@ -1,0 +1,164 @@
+---
+const projects = [
+  {
+    featured: true,
+    tag: '⭐ Featured App',
+    tagColor: 'var(--accent)',
+    title: 'FootSteps — GPS Trail App',
+    description:
+      'Record walking paths, retrace them with real-time ghost navigation, share trails with family. Built with SwiftUI + Google Maps SDK + Supabase. Live on the App Store.',
+    badges: ['SwiftUI', 'SwiftData', 'Google Maps SDK', 'Supabase', 'Firebase', 'CoreLocation'],
+    links: [
+      { label: 'App Store →', href: 'https://apps.apple.com' },
+      { label: 'GitHub →', href: 'https://github.com/arslanbutt300' },
+    ],
+    accentColor: 'rgba(127,119,221,0.08)',
+    borderColor: 'rgba(127,119,221,0.25)',
+  },
+  {
+    featured: false,
+    tag: 'iOS App',
+    tagColor: '#60a5fa',
+    title: 'Coming Soon',
+    description: 'Next iOS project. Slot ready for your upcoming app.',
+    badges: ['SwiftUI'],
+    links: [{ label: 'GitHub →', href: 'https://github.com/arslanbutt300' }],
+    accentColor: 'rgba(96,165,250,0.05)',
+    borderColor: 'var(--border)',
+  },
+  {
+    featured: false,
+    tag: 'AI Labs',
+    tagColor: 'var(--accent-2)',
+    title: 'AI Experiments',
+    description: 'Claude-powered iOS experiments. Coming soon to labs.arslanahmad.dev.',
+    badges: ['Claude API', 'Swift', 'SwiftUI'],
+    links: [{ label: 'Labs →', href: '/labs' }],
+    accentColor: 'rgba(90,240,192,0.05)',
+    borderColor: 'var(--border)',
+  },
+  {
+    featured: false,
+    tag: 'Open Source',
+    tagColor: '#f59e0b',
+    title: 'SwiftUI Components',
+    description: 'Reusable design system components for iOS developers. Coming soon.',
+    badges: ['SwiftUI', 'Swift Package'],
+    links: [{ label: 'GitHub →', href: 'https://github.com/arslanbutt300' }],
+    accentColor: 'rgba(245,158,11,0.05)',
+    borderColor: 'var(--border)',
+  },
+];
+---
+
+<section
+  id="projects"
+  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+>
+  <div class="reveal" style="margin-bottom: 56px;">
+    <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+      Work
+    </div>
+    <h2 style="font-size: clamp(32px, 4vw, 48px);">Featured Projects</h2>
+    <p style="color: var(--text-2); font-size: 15px; margin-top: 8px;">
+      Apps I've built and shipped.
+    </p>
+  </div>
+
+  <div
+    style="
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    "
+  >
+    {projects.map((p, i) => (
+      <div
+        class="project-card reveal"
+        style={`
+          background: ${p.accentColor};
+          border: 1px solid ${p.borderColor};
+          border-radius: 14px;
+          padding: 24px;
+          position: relative;
+          overflow: hidden;
+          transition: border-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
+          grid-column: ${p.featured ? 'span 2' : 'span 1'};
+          animation-delay: ${i * 0.1}s;
+        `}
+      >
+        <!-- Background glow -->
+        <div style="
+          position: absolute;
+          top: -20px;
+          right: -20px;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background: rgba(127,119,221,0.12);
+          filter: blur(30px);
+          pointer-events: none;
+        "></div>
+
+        <!-- Tag -->
+        <div style={`
+          display: inline-block;
+          background: rgba(127,119,221,0.08);
+          border: 1px solid rgba(127,119,221,0.15);
+          border-radius: 5px;
+          padding: 3px 9px;
+          font-size: 11px;
+          color: ${p.tagColor};
+          margin-bottom: 14px;
+          font-weight: 600;
+        `}>
+          {p.tag}
+        </div>
+
+        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text-1);">
+          {p.title}
+        </h3>
+
+        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px;">
+          {p.description}
+        </p>
+
+        <!-- Tech badges -->
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
+          {p.badges.map(b => (
+            <span style="
+              background: var(--bg-3);
+              border: 1px solid var(--border);
+              border-radius: 4px;
+              padding: 3px 8px;
+              font-size: 10px;
+              color: var(--text-3);
+            ">{b}</span>
+          ))}
+        </div>
+
+        <!-- Links -->
+        <div style="display: flex; gap: 14px;">
+          {p.links.map(link => (
+            <a
+              href={link.href}
+              style="font-size: 12px; color: var(--accent); font-weight: 600; transition: opacity 0.2s;"
+              class="project-link"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .project-card:hover {
+    border-color: rgba(127, 119, 221, 0.35) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(127, 119, 221, 0.08);
+  }
+  .project-link:hover { opacity: 0.7; }
+</style>

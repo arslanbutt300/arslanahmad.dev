@@ -1,0 +1,120 @@
+---
+const skills = [
+  'Swift', 'SwiftUI', 'UIKit', 'Objective-C',
+  'SwiftData', 'CoreData', 'CoreLocation', 'AVFoundation',
+  'Google Maps SDK', 'Supabase', 'Firebase', 'Xcode',
+  'REST APIs', 'AI Workflows', 'Claude API', 'Git',
+];
+
+const stats = [
+  { num: 5, suffix: '+', label: 'Years iOS Dev', icon: '📱' },
+  { num: 10, suffix: '+', label: 'Apps Shipped', icon: '🚀' },
+  { num: 1, suffix: 'k+', label: 'App Store Users', icon: '👥' },
+  { num: 1, suffix: '', label: 'App Live on Store', icon: '⭐' },
+];
+---
+
+<section
+  id="about"
+  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+>
+  <!-- Section header -->
+  <div class="reveal" style="margin-bottom: 56px;">
+    <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+      About
+    </div>
+    <h2 style="font-size: clamp(32px, 4vw, 48px);">Building apps that matter.</h2>
+    <p style="color: var(--text-2); font-size: 15px; margin-top: 8px;">
+      Lead iOS Developer · AI-assisted development · Side project founder
+    </p>
+  </div>
+
+  <!-- Two-column layout -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+
+    <!-- Left: Text + Skills -->
+    <div class="reveal-left">
+      <p style="color: var(--text-2); font-size: 15px; line-height: 1.8; margin-bottom: 20px;">
+        I've spent 5+ years building native iOS apps — from GPS tracking engines and real-time ghost navigation
+        to AI-powered workflows. I specialize in <strong style="color: var(--text-1);">SwiftUI, SwiftData, and performance-critical mobile experiences</strong>
+        that feel native and polished.
+      </p>
+      <p style="color: var(--text-2); font-size: 15px; line-height: 1.8; margin-bottom: 32px;">
+        I work with <strong style="color: var(--accent);">Claude and ChatGPT</strong> as core development partners,
+        shipping faster and better than traditional workflows alone. My current project, FootSteps,
+        is live on the App Store with GPS trail recording, ghost navigation, and family sharing.
+      </p>
+
+      <!-- Skills -->
+      <div style="font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
+        Technologies
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        {skills.map(skill => (
+          <span class="skill-tag">{skill}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: Stat cards -->
+    <div class="reveal-right" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      {stats.map((stat, i) => (
+        <div
+          class="glass"
+          style="
+            border-radius: 14px;
+            padding: 24px 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+          "
+          data-stat-target={stat.num}
+          data-stat-suffix={stat.suffix}
+        >
+          <div style="font-size: 26px; margin-bottom: 8px;">{stat.icon}</div>
+          <div
+            class="stat-number"
+            style="font-size: 32px; font-weight: 900; color: var(--accent); line-height: 1;"
+          >
+            0
+          </div>
+          <div style="font-size: 12px; color: var(--text-3); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .glass:hover { transform: translateY(-2px); }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate stat counters on scroll
+  document.querySelectorAll<HTMLElement>('[data-stat-target]').forEach((card) => {
+    const target = parseInt(card.dataset.statTarget ?? '0');
+    const suffix = card.dataset.statSuffix ?? '';
+    const numEl = card.querySelector<HTMLElement>('.stat-number');
+    if (!numEl) return;
+
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: function () {
+            numEl.textContent = Math.round(this.targets()[0].val) + suffix;
+          },
+        });
+      },
+    });
+  });
+</script>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const experiments = [
+  {
+    emoji: '🤖',
+    title: 'Claude-Powered iOS Code Review',
+    description: 'Paste your Swift code and get an AI review focused on performance, SwiftUI best practices, and memory management.',
+    status: 'Coming Soon',
+    statusColor: '#f59e0b',
+    tags: ['Claude API', 'Swift'],
+  },
+  {
+    emoji: '🗺️',
+    title: 'GPS Trail Visualizer',
+    description: 'Upload a .gpx file and visualize your trail with elevation profile, split times, and ghost replay animation.',
+    status: 'Coming Soon',
+    statusColor: '#f59e0b',
+    tags: ['Maps', 'SVG', 'GPS'],
+  },
+  {
+    emoji: '📊',
+    title: 'App Store Analytics Dashboard',
+    description: 'Connect your App Store Connect data and visualize downloads, ratings, and revenue over time.',
+    status: 'Idea',
+    statusColor: 'var(--text-3)',
+    tags: ['App Store API', 'Charts'],
+  },
+];
+---
+
+<BaseLayout title="Labs — Arslan Ahmad" description="AI experiments, interactive demos, and playful side projects.">
+  <Nav />
+  <main style="padding: 120px 48px 80px;">
+    <div style="margin-bottom: 64px; max-width: 600px;">
+      <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+        Labs
+      </div>
+      <h1 style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 12px;">
+        Experiments &amp; <span class="gradient-text">Demos</span>
+      </h1>
+      <p style="color: var(--text-2); font-size: 15px; line-height: 1.75;">
+        Interactive tools, AI experiments, and playful projects that don't fit anywhere else.
+        This is where ideas get tested before becoming real products.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+      {experiments.map(e => (
+        <div
+          class="glass"
+          style="border-radius: 14px; padding: 28px 24px;"
+        >
+          <div style="font-size: 36px; margin-bottom: 14px;">{e.emoji}</div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <h2 style="font-size: 16px; font-weight: 700; color: var(--text-1);">{e.title}</h2>
+          </div>
+          <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px;">
+            {e.description}
+          </p>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              {e.tags.map(t => (
+                <span style="
+                  background: rgba(127,119,221,0.07);
+                  border: 1px solid rgba(127,119,221,0.15);
+                  border-radius: 4px;
+                  padding: 2px 7px;
+                  font-size: 10px;
+                  color: var(--accent);
+                ">{t}</span>
+              ))}
+            </div>
+            <span style={`font-size: 11px; color: ${e.statusColor}; font-weight: 600;`}>
+              {e.status}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

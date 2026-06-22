@@ -1,0 +1,39 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer
+  style="
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  "
+>
+  <div style="font-size: 13px; color: var(--text-3);">
+    © {year} Arslan Ahmad ·
+    <span style="color: var(--accent);">arslanahmad.dev</span>
+  </div>
+
+  <div style="display: flex; gap: 20px; align-items: center;">
+    {[
+      { label: 'GitHub', href: 'https://github.com/arslanbutt300' },
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Twitter', href: '#' },
+      { label: 'hello@arslanahmad.dev', href: 'mailto:hello@arslanahmad.dev' },
+    ].map(link => (
+      <a
+        href={link.href}
+        style="font-size: 12px; color: var(--text-3); transition: color 0.2s;"
+        class="footer-link"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</footer>
+
+<style>
+  .footer-link:hover { color: var(--accent) !important; }
+</style>
