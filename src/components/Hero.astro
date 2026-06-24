@@ -377,62 +377,15 @@
   .hero-portrait {
     width: 100%;
     height: auto;
-    max-height: 110%;            /* slight vertical overflow for depth */
+    max-height: 110%;
     object-fit: contain;
     object-position: bottom center;
-    mix-blend-mode: lighten;     /* blends dark vignette bg with theme bg */
     filter:
-      drop-shadow(0 35px 60px rgba(0, 0, 0, 0.7))
+      drop-shadow(0 35px 60px rgba(0, 0, 0, 0.55))
       drop-shadow(0 -6px 28px color-mix(in srgb, var(--brand-1) 30%, transparent));
-    /* Two stacked masks intersect:
-       1. Radial vignette — fades all corners
-       2. Linear bottom fade — kills the bottom rectangle decisively
-       This eliminates the rectangular box feel entirely. */
-    -webkit-mask-image:
-      radial-gradient(
-        ellipse 60% 70% at 50% 45%,
-        #000 0%,
-        #000 30%,
-        rgba(0,0,0,0.85) 55%,
-        rgba(0,0,0,0.35) 78%,
-        transparent 100%
-      ),
-      linear-gradient(180deg,
-        #000 0%,
-        #000 65%,
-        rgba(0,0,0,0.5) 80%,
-        transparent 95%
-      );
-    -webkit-mask-composite: source-in;
-            mask-composite: intersect;
-    mask-image:
-      radial-gradient(
-        ellipse 60% 70% at 50% 45%,
-        #000 0%,
-        #000 30%,
-        rgba(0,0,0,0.85) 55%,
-        rgba(0,0,0,0.35) 78%,
-        transparent 100%
-      ),
-      linear-gradient(180deg,
-        #000 0%,
-        #000 65%,
-        rgba(0,0,0,0.5) 80%,
-        transparent 95%
-      );
   }
 
-  /* Bottom fade mask — additional theme-bg gradient to fully kill the bottom edge */
-  .hero-image-bottom-fade {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 38%;
-    background: linear-gradient(0deg, var(--bg-0) 0%, var(--bg-0) 20%, transparent 100%);
-    pointer-events: none;
-    z-index: 3;
-  }
+  .hero-image-bottom-fade { display: none; }
 
   /* ═══ FLOATING TECH TAGS ═══ */
   .hero-float-tag {

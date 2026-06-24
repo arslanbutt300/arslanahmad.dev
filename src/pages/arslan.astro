@@ -276,21 +276,11 @@ const security = [
         max-height: 110%;
         object-fit: contain;
         object-position: bottom center;
-        mix-blend-mode: lighten;
         filter:
-          drop-shadow(0 35px 60px rgba(0,0,0,0.7))
+          drop-shadow(0 35px 60px rgba(0,0,0,0.55))
           drop-shadow(0 -6px 28px color-mix(in srgb, var(--brand-1) 30%, transparent));
-        -webkit-mask-image: radial-gradient(ellipse 75% 90% at center 55%, #000 0%, #000 45%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,0.4) 82%, transparent 100%);
-        mask-image: radial-gradient(ellipse 75% 90% at center 55%, #000 0%, #000 45%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,0.4) 82%, transparent 100%);
       }
-      .portfolio-bottom-fade {
-        position: absolute;
-        left: 0; right: 0; bottom: 0;
-        height: 18%;
-        background: linear-gradient(0deg, var(--bg-0) 0%, transparent 100%);
-        pointer-events: none;
-        z-index: 3;
-      }
+      .portfolio-bottom-fade { display: none; }
 
       @media (max-width: 1024px) {
         .portfolio-hero { padding: 100px 20px 40px; }
