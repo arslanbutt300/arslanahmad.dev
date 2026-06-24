@@ -1,5 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#07070d"/>
-  <text x="50%" y="55%" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="900" fill="#7F77DD" text-anchor="middle" dominant-baseline="middle">A</text>
-  <circle cx="46" cy="18" r="5" fill="#34d399"/>
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="topF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A39BFF"/>
+      <stop offset="100%" stop-color="#7268D6"/>
+    </linearGradient>
+    <linearGradient id="leftF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7268D6"/>
+      <stop offset="100%" stop-color="#4A41A8"/>
+    </linearGradient>
+    <linearGradient id="rightF" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8A578"/>
+      <stop offset="100%" stop-color="#B47550"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="20" fill="#07070d"/>
+  <g transform="translate(20, 18)">
+    <polygon points="30,0 60,15 30,30 0,15" fill="url(#topF)"/>
+    <polygon points="0,15 30,30 30,65 0,50" fill="url(#leftF)"/>
+    <text x="8" y="48" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#fff" opacity="0.95" transform="skewY(-26.5)">&lt;/&gt;</text>
+    <polygon points="30,30 60,15 60,50 30,65" fill="url(#rightF)"/>
+    <line x1="36" y1="35" x2="56" y2="25" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+    <line x1="36" y1="44" x2="56" y2="34" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+    <line x1="36" y1="53" x2="56" y2="43" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+    <circle cx="30" cy="0" r="3.5" fill="#34d399"/>
+  </g>
 </svg>

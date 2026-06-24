@@ -2,163 +2,140 @@
 const projects = [
   {
     featured: true,
-    tag: '⭐ Featured App',
-    tagColor: 'var(--accent)',
-    title: 'FootSteps — GPS Trail App',
-    description:
-      'Record walking paths, retrace them with real-time ghost navigation, share trails with family. Built with SwiftUI + Google Maps SDK + Supabase. Live on the App Store.',
-    badges: ['SwiftUI', 'SwiftData', 'Google Maps SDK', 'Supabase', 'Firebase', 'CoreLocation'],
+    tag: '⭐ Featured',
+    side: 'brain',
+    title: 'FootSteps',
+    subtitle: 'GPS Trail Tracking · iOS',
+    description: 'Record walking paths, retrace them with real-time ghost navigation, share trails with family. Built with SwiftUI + Google Maps SDK + Supabase. Live on the App Store.',
+    badges: ['SwiftUI', 'SwiftData', 'Google Maps', 'Supabase', 'Firebase'],
     links: [
-      { label: 'App Store →', href: 'https://apps.apple.com' },
-      { label: 'GitHub →', href: 'https://github.com/arslanbutt300' },
+      { label: 'Visit Site →', href: 'https://footsteps.brainandbricks.com' },
+      { label: 'App Store ↗', href: 'https://apps.apple.com' },
     ],
-    accentColor: 'rgba(127,119,221,0.08)',
-    borderColor: 'rgba(127,119,221,0.25)',
   },
   {
     featured: false,
-    tag: 'iOS App',
-    tagColor: '#60a5fa',
-    title: 'Coming Soon',
-    description: 'Next iOS project. Slot ready for your upcoming app.',
-    badges: ['SwiftUI'],
-    links: [{ label: 'GitHub →', href: 'https://github.com/arslanbutt300' }],
-    accentColor: 'rgba(96,165,250,0.05)',
-    borderColor: 'var(--border)',
+    tag: '🔐 Under NDA',
+    side: 'brain',
+    title: 'Enterprise iOS',
+    subtitle: 'Confidential Client Work',
+    description: 'Enterprise iOS work for financial and insurance clients in East & Central Africa. Security-hardened apps, encryption, and SDK integrations.',
+    badges: ['Swift', 'Security', 'NDA'],
+    links: [{ label: 'Meet Arslan →', href: '/arslan' }],
   },
   {
     featured: false,
-    tag: 'AI Labs',
-    tagColor: 'var(--accent-2)',
-    title: 'AI Experiments',
-    description: 'Claude-powered iOS experiments. Coming soon to labs.arslanahmad.dev.',
-    badges: ['Claude API', 'Swift', 'SwiftUI'],
-    links: [{ label: 'Labs →', href: '/labs' }],
-    accentColor: 'rgba(90,240,192,0.05)',
-    borderColor: 'var(--border)',
+    tag: '🚀 Coming Soon',
+    side: 'brain',
+    title: 'New iOS App',
+    subtitle: 'In Planning',
+    description: 'A new personal iOS project in early planning. Want to be the first to know? Subscribe via the contact form below.',
+    badges: ['SwiftUI', 'AI', 'Coming'],
+    links: [{ label: 'Get Notified →', href: '/#contact' }],
   },
   {
     featured: false,
-    tag: 'Open Source',
-    tagColor: '#f59e0b',
-    title: 'SwiftUI Components',
-    description: 'Reusable design system components for iOS developers. Coming soon.',
-    badges: ['SwiftUI', 'Swift Package'],
-    links: [{ label: 'GitHub →', href: 'https://github.com/arslanbutt300' }],
-    accentColor: 'rgba(245,158,11,0.05)',
-    borderColor: 'var(--border)',
+    tag: '🧱 Site Inspections',
+    side: 'mortar',
+    title: 'Precast QC Portfolio',
+    subtitle: 'Construction Quality Assurance',
+    description: 'Completed inspections at Exeed Precast Abu Dhabi, RedX Bahrain, Dubai Precast & Rak Precast. 12+ years of precast quality control work.',
+    badges: ['Precast', 'QC', 'UAE / Bahrain'],
+    links: [{ label: 'Meet Bilal →', href: '/bilal' }],
   },
 ];
 ---
 
-<section
-  id="projects"
-  style="padding: 100px 48px; border-top: 1px solid var(--border);"
->
-  <div class="reveal" style="margin-bottom: 56px;">
-    <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
-      Work
-    </div>
-    <h2 style="font-size: clamp(32px, 4vw, 48px);">Featured Projects</h2>
-    <p style="color: var(--text-2); font-size: 15px; margin-top: 8px;">
-      Apps I've built and shipped.
-    </p>
-  </div>
-
-  <div
-    style="
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    "
-  >
-    {projects.map((p, i) => (
-      <div
-        class="project-card reveal"
-        style={`
-          background: ${p.accentColor};
-          border: 1px solid ${p.borderColor};
-          border-radius: 14px;
-          padding: 24px;
-          position: relative;
-          overflow: hidden;
-          transition: border-color 0.2s ease, transform 0.25s ease, box-shadow 0.25s ease;
-          grid-column: ${p.featured ? 'span 2' : 'span 1'};
-          animation-delay: ${i * 0.1}s;
-        `}
-      >
-        <!-- Background glow -->
-        <div style="
-          position: absolute;
-          top: -20px;
-          right: -20px;
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          background: rgba(127,119,221,0.12);
-          filter: blur(30px);
-          pointer-events: none;
-        "></div>
-
-        <!-- Tag -->
-        <div style={`
-          display: inline-block;
-          background: rgba(127,119,221,0.08);
-          border: 1px solid rgba(127,119,221,0.15);
-          border-radius: 5px;
-          padding: 3px 9px;
-          font-size: 11px;
-          color: ${p.tagColor};
-          margin-bottom: 14px;
-          font-weight: 600;
-        `}>
-          {p.tag}
-        </div>
-
-        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text-1);">
-          {p.title}
-        </h3>
-
-        <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 16px;">
-          {p.description}
-        </p>
-
-        <!-- Tech badges -->
-        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;">
-          {p.badges.map(b => (
-            <span style="
-              background: var(--bg-3);
-              border: 1px solid var(--border);
-              border-radius: 4px;
-              padding: 3px 8px;
-              font-size: 10px;
-              color: var(--text-3);
-            ">{b}</span>
-          ))}
-        </div>
-
-        <!-- Links -->
-        <div style="display: flex; gap: 14px;">
-          {p.links.map(link => (
-            <a
-              href={link.href}
-              style="font-size: 12px; color: var(--accent); font-weight: 600; transition: opacity 0.2s;"
-              class="project-link"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+<section id="projects" style="padding: 120px 48px; border-top: 1px solid var(--border-1);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="reveal" style="margin-bottom: 56px; max-width: 720px;">
+      <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-weight: 600;">
+        Featured Work
       </div>
-    ))}
+      <h2 style="font-size: clamp(36px, 5vw, 56px); font-family: 'Space Grotesk', sans-serif; letter-spacing: -2px;">
+        Things we've <span class="gradient-text">built.</span>
+      </h2>
+      <p style="color: var(--text-2); font-size: 16px; margin-top: 14px; line-height: 1.7;">
+        Apps shipped to the App Store, structures inspected, and projects that ship together.
+      </p>
+    </div>
+
+    <div class="projects-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 18px;">
+      {projects.map((p, i) => (
+        <div
+          class={`glass tilt-card reveal-scale project-card-${p.featured ? 'featured' : 'small-' + i}`}
+          style="
+            border-radius: 18px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+          "
+        >
+          <div style={`
+            position: absolute; top: -40px; right: -40px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, ${p.side === 'brain' ? 'var(--mesh-1)' : 'var(--mesh-2)'} 0%, transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
+          `}></div>
+
+          <div style="position: relative;">
+            <div style={`
+              display: inline-flex;
+              background: color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 12%, transparent);
+              border: 1px solid color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 25%, transparent);
+              border-radius: 6px;
+              padding: 4px 10px;
+              font-size: 11px;
+              color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'};
+              margin-bottom: 16px;
+              font-weight: 600;
+            `}>{p.tag}</div>
+
+            <h3 style={`font-size: ${p.featured ? '32px' : '20px'}; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;`}>
+              {p.title}
+            </h3>
+            <div style={`font-size: 13px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 14px; font-weight: 500;`}>
+              {p.subtitle}
+            </div>
+
+            <p style={`font-size: ${p.featured ? '15px' : '13px'}; color: var(--text-2); line-height: 1.7; margin-bottom: 18px; ${p.featured ? 'max-width: 600px;' : ''}`}>
+              {p.description}
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px;">
+              {p.badges.map(b => (
+                <span style="background: var(--bg-3); border: 1px solid var(--border-1); border-radius: 4px; padding: 3px 8px; font-size: 10px; color: var(--text-3);">{b}</span>
+              ))}
+            </div>
+
+            <div style="display: flex; gap: 16px;">
+              {p.links.map(link => (
+                <a href={link.href} target={link.href.startsWith('/') ? '_self' : '_blank'} style={`font-size: 12px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; font-weight: 600;`}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .project-card:hover {
-    border-color: rgba(127, 119, 221, 0.35) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(127, 119, 221, 0.08);
+  .project-card-featured { grid-column: 1 / -1; grid-row: 1; }
+  .project-card-small-1 { grid-column: 1; grid-row: 2; }
+  .project-card-small-2 { grid-column: 2; grid-row: 2; }
+  .project-card-small-3 { grid-column: 3; grid-row: 2; }
+  @media (max-width: 900px) {
+    .projects-grid { grid-template-columns: 1fr !important; }
+    .project-card-featured,
+    .project-card-small-1,
+    .project-card-small-2,
+    .project-card-small-3 {
+      grid-column: 1 !important;
+      grid-row: auto !important;
+    }
   }
-  .project-link:hover { opacity: 0.7; }
 </style>

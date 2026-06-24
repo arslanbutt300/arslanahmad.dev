@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" preserveAspectRatio="xMidYEnd meet">
+  <defs>
+    <radialGradient id="bgVignette" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1a2520" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#0a0f0d" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="figureBody" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#5BB58A"/>
+      <stop offset="55%" stop-color="#2E8765"/>
+      <stop offset="100%" stop-color="#0F3F2E"/>
+    </linearGradient>
+    <linearGradient id="figureHead" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#7EE2B8"/>
+      <stop offset="100%" stop-color="#2E8765"/>
+    </linearGradient>
+    <linearGradient id="rimLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00FFB2" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00FFB2" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#00FFB2" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="haloGlow" cx="50%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#00D084" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#00D084" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00D084" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- Background vignette behind subject -->
+  <rect x="0" y="0" width="400" height="600" fill="url(#bgVignette)"/>
+
+  <!-- Halo glow behind head -->
+  <ellipse cx="200" cy="170" rx="180" ry="170" fill="url(#haloGlow)"/>
+
+  <!-- Shoulders / body silhouette -->
+  <path d="M 60 600
+           L 60 460
+           Q 60 380 130 350
+           Q 175 330 200 330
+           Q 225 330 270 350
+           Q 340 380 340 460
+           L 340 600 Z"
+        fill="url(#figureBody)"/>
+
+  <!-- Subtle body shadows for depth -->
+  <path d="M 200 600 L 200 330 Q 175 330 130 350 Q 60 380 60 460 L 60 600 Z"
+        fill="#000" opacity="0.15"/>
+
+  <!-- Collar / jacket detail -->
+  <path d="M 155 350 Q 200 360 245 350 L 245 365 Q 200 378 155 365 Z"
+        fill="#0F3F2E" opacity="0.9"/>
+
+  <!-- Neck -->
+  <rect x="180" y="285" width="40" height="60" fill="url(#figureHead)" opacity="0.85"/>
+
+  <!-- Head (rounded silhouette — no facial features for "generic person" feel) -->
+  <ellipse cx="200" cy="220" rx="78" ry="92" fill="url(#figureHead)"/>
+
+  <!-- Hair shape (top of head) — adds personality without face -->
+  <path d="M 135 200
+           Q 135 145 175 130
+           Q 200 122 225 130
+           Q 265 145 265 205
+           Q 265 175 230 165
+           Q 200 160 170 165
+           Q 135 175 135 200 Z"
+        fill="#0F3F2E" opacity="0.85"/>
+
+  <!-- Rim light highlight on shoulder (right edge) -->
+  <path d="M 270 350 Q 340 380 340 460 L 340 600 L 320 600 L 320 460 Q 320 395 260 365 Z"
+        fill="url(#rimLight)" opacity="0.7"/>
+
+  <!-- Rim light highlight on shoulder (left edge) -->
+  <path d="M 130 350 Q 60 380 60 460 L 60 600 L 80 600 L 80 460 Q 80 395 140 365 Z"
+        fill="url(#rimLight)" opacity="0.45"/>
+
+  <!-- Rim light on top of head -->
+  <ellipse cx="200" cy="145" rx="58" ry="14" fill="#00FFB2" opacity="0.35" filter="url(#softBlur)"/>
+
+  <!-- Subtle face highlight (just a soft glow, no features) -->
+  <ellipse cx="200" cy="245" rx="45" ry="55" fill="#fff" opacity="0.04"/>
+</svg>

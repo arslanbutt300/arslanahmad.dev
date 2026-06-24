@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const competencies = {
+  'Quality Control': ['Pre-Pour Inspection', 'Post-Pour Inspection', 'Precast Element Checks', 'Compliance Verification'],
+  'Materials Testing': ['Concrete Strength Testing', 'Mix Design', 'Admixture Trials', 'Lab Operations'],
+  'Site Supervision': ['Structural Supervision', 'Architectural Supervision', 'Multi-Disciplinary Teams', 'Stakeholder Coordination'],
+  'Surveying': ['Total Station', 'Site Leveling', 'Layout Marking', 'Dimensional Checks'],
+  'HSE': ['Health & Safety Standards', 'HSE Compliance', 'Site Audits', 'Risk Assessment'],
+  'Tools': ['AutoCAD 2D/3D', 'MS Office', 'Technical Reporting', 'Inspection Records'],
+};
+
+const experience = [
+  {
+    date: 'Feb 2026 — Present',
+    company: 'Exeed Precast · Abu Dhabi, UAE',
+    role: 'Sr Quality Inspector',
+    duration: 'Current',
+    bullets: [
+      'Senior quality inspection across precast concrete operations in Abu Dhabi.',
+      'Leading inspection workflows for residential and commercial precast deliveries.',
+      'Coordinating with production, design, and HSE teams to maintain spec compliance.',
+    ],
+  },
+  {
+    date: 'Jul 2018 — Jun 2024',
+    company: 'RedX Industries · Kingdom of Bahrain',
+    role: 'QC Inspector',
+    duration: '6 Years',
+    bullets: [
+      'Conducted pre- and post-pour inspections of precast elements as per drawings.',
+      'Oversaw hollow core casting, bed preparation, and concrete strength testing.',
+      'Maintained inspection records, coordinated with site teams, ensured compliance with design revisions.',
+    ],
+  },
+  {
+    date: 'Mar 2017 — Apr 2018',
+    company: 'Dubai Precast LLC · UAE',
+    role: 'QC Inspector',
+    duration: '1 Year',
+    bullets: [
+      'Managed hollow core slab production including stressing, de-molding, and load inspections.',
+      'Conducted quality checks, camber reports, and coordinated with QC Manager for approvals.',
+    ],
+  },
+  {
+    date: 'Feb 2012 — Dec 2016',
+    company: 'Rak Precast · UAE',
+    role: 'Lab In-Charge / Associate Material Engineer',
+    duration: '5 Years',
+    bullets: [
+      'Led laboratory operations for concrete and raw material testing.',
+      'Prepared mix designs, conducted trials with admixtures, ensured calibration of testing equipment.',
+      'Coordinated with contractors and QC inspectors for compliance with international standards.',
+    ],
+  },
+];
+
+const education = [
+  { degree: 'Diploma of Associate Engineering · Civil Technology', school: 'CTTC, Gujranwala', year: '2010' },
+  { degree: 'F.Sc. · Pre-Engineering', school: 'Govt. College Gujranwala', year: '2007' },
+  { degree: 'Matric · Science', school: 'Al-Badar High School Gujranwala', year: '2005' },
+];
+
+const tools = ['AutoCAD 2D/3D', 'MS Office (Word, Excel)', 'Technical Reporting', 'Computer Hardware & Software'];
+
+const credentials = [
+  {
+    label: 'Driving License',
+    detail: 'Light Vehicle · Bahrain',
+    svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" /><circle cx="8" cy="12" r="2.5" fill="currentColor" opacity="0.25"/><circle cx="8" cy="12" r="2.5"/><line x1="13" y1="10" x2="19" y2="10"/><line x1="13" y1="13" x2="17" y2="13"/><line x1="13" y1="16" x2="18" y2="16"/></svg>',
+  },
+  {
+    label: 'Passport',
+    detail: 'Valid until 2030',
+    svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5z"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/><circle cx="12" cy="10" r="1" fill="currentColor"/></svg>',
+  },
+  {
+    label: 'Work Experience',
+    detail: 'UAE & Bahrain · 12+ years',
+    svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>',
+  },
+];
+---
+
+<BaseLayout
+  title="Muhammad Bilal — Sr Quality Inspector · Brain & Bricks"
+  description="Sr Quality Inspector at Exeed Precast, Abu Dhabi. 12+ years across UAE and Bahrain in precast concrete, materials testing, and structural site supervision. Co-founder of Brain & Bricks."
+>
+  <Nav />
+
+  <main style="padding-top: 68px;">
+    <!-- HERO — Premium SaaS treatment -->
+    <section class="portfolio-hero" data-side="mortar">
+      <div class="portfolio-grid">
+        <div class="portfolio-text reveal-left">
+          <div class="badge" style="margin-bottom: 24px; border-color: color-mix(in srgb, var(--brand-2) 30%, transparent); color: var(--brand-2); background: color-mix(in srgb, var(--brand-2) 10%, transparent);">
+            <div class="pulse-dot"></div>
+            Currently at Exeed Precast · Abu Dhabi
+          </div>
+          <h1 class="portfolio-name">
+            Muhammad<br/><span class="gradient-text-2">Bilal.</span>
+          </h1>
+          <p class="portfolio-role">
+            Sr Quality Inspector · 12+ Years in Precast
+          </p>
+          <p class="portfolio-bio">
+            Civil Inspector with over a decade across the UAE and Bahrain — precast concrete,
+            materials testing, structural supervision, and laboratory operations.
+            Ensuring structures stand as long as the code that supports them.
+          </p>
+
+          <div class="portfolio-ctas">
+            <a href="#experience" class="btn-primary" style="background: linear-gradient(135deg, var(--brand-2), var(--brand-2-dark));">View My Work →</a>
+            <a href="mailto:bilal@brainandbricks.com" class="btn-ghost">Get In Touch</a>
+          </div>
+
+          <!-- Credentials row with custom SVG icons -->
+          <div class="credentials-row">
+            {credentials.map(c => (
+              <div class="glass credential-card tilt-card">
+                <div class="credential-icon" set:html={c.svg}></div>
+                <div class="credential-label">{c.label}</div>
+                <div class="credential-detail">{c.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Premium portrait area with halo + cube + floating -->
+        <div class="portfolio-image-col reveal-right">
+          <div class="portfolio-backplate" aria-hidden="true">
+            <div class="portfolio-glow portfolio-glow-mortar"></div>
+            <div class="portfolio-cube spin-slow-3d">
+              <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="120,10 220,60 120,110 20,60" fill="var(--brand-2)" opacity="0.7"/>
+                <polygon points="20,60 120,110 120,220 20,170" fill="var(--brand-2-dark)" opacity="0.85"/>
+                <polygon points="120,110 220,60 220,170 120,220" fill="var(--brand-1)" opacity="0.7"/>
+                <circle cx="120" cy="10" r="8" fill="var(--brand-bond)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="portfolio-image-wrap">
+            <img src="/bilal-avatar.svg" alt="Muhammad Bilal" class="portfolio-portrait portfolio-portrait-mortar" loading="eager"/>
+            <div class="portfolio-bottom-fade"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .portfolio-hero {
+        padding: 100px 48px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .portfolio-grid {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .portfolio-name {
+        font-size: clamp(48px, 7vw, 84px);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -2.5px;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      .portfolio-role {
+        font-size: 18px;
+        color: var(--text-2);
+        margin-top: 18px;
+      }
+      .portfolio-bio {
+        font-size: 15px;
+        color: var(--text-2);
+        line-height: 1.75;
+        margin-top: 16px;
+        max-width: 520px;
+      }
+      .portfolio-ctas {
+        display: flex;
+        gap: 12px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+
+      .credentials-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 32px;
+      }
+      .credential-card {
+        border-radius: 14px;
+        padding: 16px;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .credential-icon {
+        width: 28px;
+        height: 28px;
+        color: var(--brand-2);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        filter: drop-shadow(0 4px 12px color-mix(in srgb, var(--brand-2) 35%, transparent));
+      }
+      .credential-icon svg { width: 100%; height: 100%; }
+      .credential-label {
+        font-size: 11px;
+        color: var(--brand-2);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+      }
+      .credential-detail {
+        font-size: 12px;
+        color: var(--text-2);
+        margin-top: 4px;
+      }
+
+      .portfolio-image-col {
+        position: relative;
+        min-height: 540px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .portfolio-backplate {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        pointer-events: none;
+      }
+      .portfolio-glow {
+        position: absolute;
+        width: 600px; height: 600px; max-width: 90vw;
+        border-radius: 50%;
+        background: radial-gradient(circle at center,
+          color-mix(in srgb, var(--brand-2) 22%, transparent) 0%,
+          color-mix(in srgb, var(--brand-2) 8%, transparent) 30%,
+          transparent 60%);
+        filter: blur(40px);
+      }
+      .portfolio-cube {
+        position: absolute;
+        width: 380px; height: 380px; max-width: 70vw;
+        opacity: 0.10;
+        filter: drop-shadow(0 0 40px color-mix(in srgb, var(--brand-2) 50%, transparent));
+        transform-style: preserve-3d;
+        perspective: 1200px;
+      }
+      .portfolio-cube svg { width: 100%; height: 100%; }
+
+      .portfolio-image-wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 2/3;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        animation: heroFloat 6s ease-in-out infinite;
+      }
+
+      /* Bilal avatar — same premium portrait treatment as Arslan */
+      .portfolio-portrait {
+        width: 100%;
+        height: auto;
+        max-height: 110%;
+        object-fit: contain;
+        object-position: bottom center;
+        mix-blend-mode: lighten;
+        filter:
+          drop-shadow(0 35px 60px rgba(0,0,0,0.7))
+          drop-shadow(0 -6px 28px color-mix(in srgb, var(--brand-1) 30%, transparent));
+        -webkit-mask-image:
+          radial-gradient(ellipse 60% 70% at 50% 45%, #000 0%, #000 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 100%),
+          linear-gradient(180deg, #000 0%, #000 65%, rgba(0,0,0,0.5) 80%, transparent 95%);
+        -webkit-mask-composite: source-in;
+                mask-composite: intersect;
+        mask-image:
+          radial-gradient(ellipse 60% 70% at 50% 45%, #000 0%, #000 30%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.35) 78%, transparent 100%),
+          linear-gradient(180deg, #000 0%, #000 65%, rgba(0,0,0,0.5) 80%, transparent 95%);
+      }
+      .portfolio-portrait-mortar {
+        filter:
+          drop-shadow(0 35px 60px rgba(0,0,0,0.7))
+          drop-shadow(0 -6px 28px color-mix(in srgb, var(--brand-2) 30%, transparent));
+      }
+      .portfolio-bottom-fade {
+        position: absolute;
+        left: 0; right: 0; bottom: -20px;
+        height: 60px;
+        background: linear-gradient(0deg, var(--bg-0) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      @media (max-width: 1024px) {
+        .portfolio-hero { padding: 100px 20px 40px; }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          text-align: center;
+        }
+        .portfolio-image-col {
+          order: -1;
+          min-height: 380px;
+        }
+        .portfolio-image-wrap { max-width: 320px; }
+        .portfolio-glow { width: 380px; height: 380px; }
+        .portfolio-cube { width: 280px; height: 280px; }
+        .portfolio-text { display: flex; flex-direction: column; align-items: center; }
+        .portfolio-bio { text-align: center; }
+        .portfolio-ctas { justify-content: center; }
+        .credentials-row { grid-template-columns: 1fr; }
+      }
+    </style>
+
+    <!-- CORE COMPETENCIES -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Expertise</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Core Competencies</h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 560px;">
+            A full quality control and materials engineering toolkit built across precast plants and active construction sites.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          {Object.entries(competencies).map(([cat, tags]) => (
+            <div class="glass tilt-card reveal-scale" style="border-radius: 16px; padding: 24px;">
+              <div style="font-size: 11px; color: var(--brand-2); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600;">{cat}</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                {tags.map(t => <span style="background: color-mix(in srgb, var(--brand-2) 10%, transparent); border: 1px solid color-mix(in srgb, var(--brand-2) 25%, transparent); color: var(--brand-2); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 500;">{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience" style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Work History</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Experience</h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 560px;">
+            12+ years across precast plants and active construction sites in the UAE and Bahrain.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          {experience.map((exp, i) => (
+            <div class="glass reveal tilt-card" style="border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start;">
+              <div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-3); margin-bottom: 8px;">{exp.date}</div>
+                <div style="display: inline-block; background: color-mix(in srgb, var(--brand-2) 12%, transparent); border: 1px solid color-mix(in srgb, var(--brand-2) 30%, transparent); color: var(--brand-2); border-radius: 6px; padding: 3px 10px; font-size: 11px; font-weight: 600;">{exp.duration}</div>
+              </div>
+              <div>
+                <div style="font-size: 18px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; font-family: 'Space Grotesk', sans-serif;">{exp.company}</div>
+                <div style="font-size: 14px; color: var(--brand-2); font-weight: 500; margin-bottom: 16px;">{exp.role}</div>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                  {exp.bullets.map(b => (
+                    <li style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--text-2); line-height: 1.65;">
+                      <span style="color: var(--brand-2); flex-shrink: 0; margin-top: 1px;">▸</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY PROJECTS -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Key Projects</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Notable <span class="gradient-text-2">Work</span></h2>
+        </div>
+
+        <div class="glass reveal-scale tilt-card" style="border-radius: 20px; padding: 36px;">
+          <div style="display: flex; gap: 20px; align-items: start; flex-wrap: wrap;">
+            <div style="font-size: 48px;">🏗️</div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 8px; font-family: 'Space Grotesk', sans-serif;">Multiple Precast Projects · UAE &amp; Bahrain</h3>
+              <p style="font-size: 13px; color: var(--brand-2); font-weight: 500; margin-bottom: 14px;">QC Inspector &amp; Lab In-Charge · 2012 — 2024</p>
+              <p style="font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 18px;">
+                Quality inspections, hollow-core slab production, mix design, and laboratory testing for
+                residential and commercial developments across the UAE and Bahrain. Engagements ranged
+                from large-scale precast plants to active construction sites with multi-disciplinary teams.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                {['Precast Concrete', 'Hollow Core Slabs', 'Mix Design', 'Lab Testing', 'Residential', 'Commercial', 'HSE'].map(t => (
+                  <span style="background: color-mix(in srgb, var(--brand-2) 10%, transparent); border: 1px solid color-mix(in srgb, var(--brand-2) 25%, transparent); color: var(--brand-2); border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 500;">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CONTACT -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px;">
+          <div class="reveal-left">
+            <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Education</div>
+            <h2 style="font-size: 28px; font-family: 'Space Grotesk', sans-serif; margin-bottom: 24px;">Academic Background</h2>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              {education.map(e => (
+                <div class="glass tilt-card" style="border-radius: 14px; padding: 22px;">
+                  <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">{e.degree}</h3>
+                  <div style="font-size: 13px; color: var(--text-2);">{e.school}</div>
+                  <div style="font-size: 11px; color: var(--brand-2); font-family: 'JetBrains Mono', monospace; margin-top: 6px;">{e.year}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style="margin-top: 32px;">
+              <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; font-weight: 600;">Technical Skills</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                {tools.map(t => <span style="background: color-mix(in srgb, var(--brand-2) 10%, transparent); border: 1px solid color-mix(in srgb, var(--brand-2) 25%, transparent); color: var(--brand-2); border-radius: 6px; padding: 5px 12px; font-size: 12px; font-weight: 500;">{t}</span>)}
+              </div>
+            </div>
+          </div>
+
+          <div class="glass reveal-right" style="border-radius: 18px; padding: 32px; height: fit-content;">
+            <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-weight: 600;">Let's Connect</div>
+            <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 16px;">Hire me for QC inspection</h3>
+            <p style="color: var(--text-2); font-size: 13px; line-height: 1.7; margin-bottom: 20px;">
+              Currently based in Abu Dhabi, UAE. Available for QC inspection consulting, precast quality assurance, and materials testing engagements.
+            </p>
+            <a href="mailto:bilal@brainandbricks.com" style="display: block; color: var(--brand-2); font-weight: 600; margin-bottom: 6px;">bilal@brainandbricks.com</a>
+            <a href="mailto:mdbilal8924@gmail.com" style="display: block; color: var(--text-2); font-size: 12px; margin-bottom: 12px;">mdbilal8924@gmail.com</a>
+            <a href="tel:+923338212676" style="display: block; color: var(--text-2); font-size: 13px;">📞 +92 333 8212676</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

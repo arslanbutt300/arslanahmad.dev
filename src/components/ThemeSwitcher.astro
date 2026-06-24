@@ -1,0 +1,161 @@
+---
+const themes = [
+  { id: 'vercel-mint',     name: 'Vercel Mint',      color: '#00D084', dark: true },
+  { id: 'purple-brick',    name: 'Purple × Brick',   color: '#9D94FF', dark: true },
+  { id: 'porcelain-cream', name: 'Porcelain Cream',  color: '#5B52C8', dark: false },
+  { id: 'frosted-sky',     name: 'Frosted Sky',      color: '#2563eb', dark: false },
+  { id: 'sandstone-mint',  name: 'Sandstone Mint',   color: '#0d9488', dark: false },
+  { id: 'neon-mint',       name: 'Neon Mint',        color: '#00ffd1', dark: true },
+  { id: 'ocean-amber',     name: 'Ocean Amber',      color: '#4f9cf9', dark: true },
+  { id: 'sunset-violet',   name: 'Sunset Violet',    color: '#c084fc', dark: true },
+  { id: 'cyber-rose',      name: 'Cyber Rose',       color: '#ff3d8b', dark: true },
+];
+---
+
+<div id="theme-switcher" style="
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 200;
+">
+  <button id="theme-switcher-toggle" aria-label="Switch theme" style="
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-1);
+    border: 1px solid var(--border-1);
+    backdrop-filter: blur(16px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: var(--text-1);
+    font-size: 18px;
+  ">🎨</button>
+
+  <div id="theme-switcher-panel" style="
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    background: var(--bg-1);
+    border: 1px solid var(--border-1);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    min-width: 220px;
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: bottom right;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(16px);
+  ">
+    <div style="font-size: 10px; color: var(--text-3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; font-weight: 600;">
+      Pick a theme
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      {themes.map(t => (
+        <button
+          data-theme={t.id}
+          class="theme-option"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-1);
+            font-size: 13px;
+            font-weight: 500;
+            text-align: left;
+            transition: all 0.2s ease;
+            width: 100%;
+          "
+        >
+          <span style={`width: 18px; height: 18px; border-radius: 50%; background: ${t.color}; box-shadow: 0 0 12px ${t.color}80;`}></span>
+          <span style="flex: 1;">{t.name}</span>
+          <span style={`font-size: 9px; color: var(--text-3); padding: 2px 6px; border-radius: 4px; background: ${t.dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'};`}>
+            {t.dark ? 'dark' : 'light'}
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  #theme-switcher-toggle:hover {
+    transform: rotate(20deg) scale(1.08);
+  }
+  .theme-option:hover {
+    background: var(--bg-2) !important;
+    border-color: var(--border-1) !important;
+  }
+  .theme-option.active {
+    background: color-mix(in srgb, var(--brand-1) 12%, transparent) !important;
+    border-color: color-mix(in srgb, var(--brand-1) 35%, transparent) !important;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'bb-theme';
+  const VALID = ['vercel-mint','purple-brick','porcelain-cream','frosted-sky','sandstone-mint','neon-mint','ocean-amber','sunset-violet','cyber-rose'];
+
+  const toggle = document.getElementById('theme-switcher-toggle');
+  const panel = document.getElementById('theme-switcher-panel');
+  const options = document.querySelectorAll<HTMLElement>('.theme-option');
+
+  // Apply saved theme on load
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved && VALID.includes(saved)) {
+    document.body.className = `theme-${saved}`;
+  }
+  // Mark active
+  function refreshActive() {
+    const current = (document.body.className.match(/theme-([\w-]+)/) || [])[1];
+    options.forEach(o => {
+      o.classList.toggle('active', o.dataset.theme === current);
+    });
+  }
+  refreshActive();
+
+  // Toggle panel
+  let open = false;
+  toggle?.addEventListener('click', () => {
+    open = !open;
+    if (panel) {
+      panel.style.opacity = open ? '1' : '0';
+      panel.style.transform = open ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.96)';
+      panel.style.pointerEvents = open ? 'auto' : 'none';
+    }
+  });
+
+  // Pick theme
+  options.forEach(o => {
+    o.addEventListener('click', () => {
+      const id = o.dataset.theme!;
+      document.body.className = `theme-${id}`;
+      localStorage.setItem(STORAGE_KEY, id);
+      refreshActive();
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!open) return;
+    const sw = document.getElementById('theme-switcher');
+    if (sw && !sw.contains(e.target as Node)) {
+      open = false;
+      if (panel) {
+        panel.style.opacity = '0';
+        panel.style.transform = 'translateY(8px) scale(0.96)';
+        panel.style.pointerEvents = 'none';
+      }
+    }
+  });
+</script>

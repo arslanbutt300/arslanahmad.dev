@@ -7,7 +7,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://arslanahmad.dev',
+  site: 'https://brainandbricks.com',
 
   vite: {
     plugins: [tailwindcss()],

@@ -14,9 +14,23 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// Detect category from tags: iOS/dev vs Precast/QC
+const tags = post.data.tags.map(t => t.toLowerCase());
+const isPrecast = tags.some(t =>
+  t.includes('precast') || t.includes('qc') || t.includes('concrete') ||
+  t.includes('hollow') || t.includes('mix') || t.includes('materials') ||
+  t.includes('inspection')
+);
+
+const author = isPrecast ? 'Muhammad Bilal' : 'Arslan Ahmad';
+const authorLink = isPrecast ? '/bilal' : '/arslan';
+const ctaText = isPrecast
+  ? 'Enjoyed this article? Muhammad Bilal writes about precast quality control, materials testing, and construction inspections.'
+  : 'Enjoyed this article? Arslan Ahmad writes about iOS development, SwiftUI, and AI-assisted workflows.';
 ---
 
-<BaseLayout title={`${post.data.title} — Arslan Ahmad`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} — Brain & Bricks`} description={post.data.description}>
   <Nav />
   <main style="padding: 120px 48px 80px; max-width: 720px; margin: 0 auto;">
     <!-- Back -->
@@ -40,7 +54,7 @@ const { Content } = await render(post);
     <div style="margin-bottom: 48px;">
       <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
         {post.data.tags.map(tag => (
-          <span style="font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid rgba(127,119,221,0.2); padding: 3px 8px; border-radius: 4px;">
+          <span style="font-size: 10px; color: var(--brand-1); text-transform: uppercase; letter-spacing: 1.5px; border: 1px solid rgba(127,119,221,0.2); padding: 3px 8px; border-radius: 4px;">
             {tag}
           </span>
         ))}
@@ -50,8 +64,8 @@ const { Content } = await render(post);
         {post.data.title}
       </h1>
 
-      <div style="font-size: 13px; color: var(--text-3); display: flex; gap: 16px; align-items: center;">
-        <span>Arslan Ahmad</span>
+      <div style="font-size: 13px; color: var(--text-3); display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <a href={authorLink} style="color: var(--brand-1); font-weight: 600;">{author}</a>
         <span>·</span>
         <span>{post.data.readTime}</span>
         <span>·</span>
@@ -60,33 +74,38 @@ const { Content } = await render(post);
     </div>
 
     <!-- Divider -->
-    <div style="height: 1px; background: var(--border); margin-bottom: 48px;"></div>
+    <div style="height: 1px; background: var(--border-1); margin-bottom: 48px;"></div>
 
     <!-- Content -->
     <article class="prose">
       <Content />
     </article>
 
-    <!-- Footer CTA -->
-    <div style="
+    <!-- Footer CTA — category-aware -->
+    <div style={`
       margin-top: 72px;
       padding: 32px;
-      background: rgba(127,119,221,0.06);
-      border: 1px solid rgba(127,119,221,0.2);
+      background: color-mix(in srgb, ${isPrecast ? 'var(--brand-2)' : 'var(--brand-1)'} 8%, transparent);
+      border: 1px solid color-mix(in srgb, ${isPrecast ? 'var(--brand-2)' : 'var(--brand-1)'} 25%, transparent);
       border-radius: 14px;
       text-align: center;
-    ">
-      <p style="color: var(--text-2); font-size: 14px; margin-bottom: 16px;">
-        Enjoyed this article? I write about iOS development and AI workflows.
+    `}>
+      <p style="color: var(--text-2); font-size: 14px; margin-bottom: 16px; line-height: 1.6;">
+        {ctaText}
       </p>
-      <a href="/blog" style="color: var(--accent); font-size: 14px; font-weight: 600;">
-        Read more articles →
-      </a>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href={`/blog?cat=${isPrecast ? 'precast' : 'ios'}`} style={`color: ${isPrecast ? 'var(--brand-2)' : 'var(--brand-1)'}; font-size: 14px; font-weight: 600;`}>
+          Read more {isPrecast ? 'precast' : 'iOS'} articles →
+        </a>
+        <a href={authorLink} style="color: var(--text-3); font-size: 14px; font-weight: 600;">
+          Meet {author} →
+        </a>
+      </div>
     </div>
   </main>
   <Footer />
 </BaseLayout>
 
 <style>
-  .back-link:hover { color: var(--accent) !important; }
+  .back-link:hover { color: var(--brand-1) !important; }
 </style>

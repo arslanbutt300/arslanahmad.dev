@@ -1,93 +1,153 @@
 ---
-const skills = [
-  'Swift', 'SwiftUI', 'UIKit', 'Objective-C',
-  'SwiftData', 'CoreData', 'CoreLocation', 'AVFoundation',
-  'Google Maps SDK', 'Supabase', 'Firebase', 'Xcode',
-  'REST APIs', 'AI Workflows', 'Claude API', 'Git',
+const brothers = [
+  {
+    name: 'Arslan Ahmad',
+    role: 'Principal iOS Engineer',
+    focus: 'Code',
+    company: 'Ozoned Digital · Lahore',
+    bio: 'Building high-performance iOS apps with Swift, SwiftUI, and SwiftData. 6+ years across creative media, enterprise insurance, and security-hardened platforms.',
+    skills: ['Swift', 'SwiftUI', 'UIKit', 'HealthKit', 'CoreLocation', 'SwiftData', 'Firebase', 'Security'],
+    gradient: 'var(--brand-1)',
+    accent: 'var(--brand-1-dark)',
+    link: '/arslan',
+    apps: '12+',
+  },
+  {
+    name: 'Muhammad Bilal',
+    role: 'Sr Quality Inspector',
+    focus: 'Concrete',
+    company: 'Exeed Precast · Abu Dhabi, UAE',
+    bio: 'Civil Inspector with 12+ years across UAE and Bahrain. Precast concrete, materials testing, lab operations, and structural site supervision — ensuring structures stand as long as the code that supports them.',
+    skills: ['Precast QC', 'Materials Testing', 'Mix Design', 'Site Supervision', 'HSE Compliance', 'AutoCAD'],
+    gradient: 'var(--brand-2)',
+    accent: 'var(--brand-2-dark)',
+    link: '/bilal',
+    apps: 'Sites',
+  },
 ];
 
 const stats = [
-  { num: 5, suffix: '+', label: 'Years iOS Dev', icon: '📱' },
-  { num: 10, suffix: '+', label: 'Apps Shipped', icon: '🚀' },
-  { num: 1, suffix: 'k+', label: 'App Store Users', icon: '👥' },
-  { num: 1, suffix: '', label: 'App Live on Store', icon: '⭐' },
+  { num: 6, suffix: '+', label: 'Years Experience', icon: '🚀' },
+  { num: 12, suffix: '+', label: 'Apps Shipped', icon: '📱' },
+  { num: 6, suffix: '', label: 'Live on App Store', icon: '⭐' },
+  { num: 1, suffix: '🏆', label: 'EoM Award 2023', icon: '🏅' },
 ];
 ---
 
-<section
-  id="about"
-  style="padding: 100px 48px; border-top: 1px solid var(--border);"
->
-  <!-- Section header -->
-  <div class="reveal" style="margin-bottom: 56px;">
-    <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
-      About
+<section id="about" style="padding: 120px 48px; border-top: 1px solid var(--border-1); position: relative;">
+  <div class="reveal" style="margin-bottom: 64px; max-width: 720px;">
+    <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-weight: 600;">
+      About Us
     </div>
-    <h2 style="font-size: clamp(32px, 4vw, 48px);">Building apps that matter.</h2>
-    <p style="color: var(--text-2); font-size: 15px; margin-top: 8px;">
-      Lead iOS Developer · AI-assisted development · Side project founder
+    <h2 style="font-size: clamp(36px, 5vw, 56px); font-family: 'Space Grotesk', sans-serif; letter-spacing: -2px;">
+      Where intelligence<br/>meets <span class="gradient-text-2">structure.</span>
+    </h2>
+    <p style="color: var(--text-2); font-size: 17px; margin-top: 16px; line-height: 1.7;">
+      Two brothers — one builds digital products, the other builds physical structures.
+      Together, we ship things that last.
     </p>
   </div>
 
-  <!-- Two-column layout -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
+  <!-- Two brothers cards -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 64px;" id="brothers-grid">
+    {brothers.map((b, i) => (
+      <a
+        href={b.link}
+        class={`tilt-card glass ${i === 0 ? 'reveal-left' : 'reveal-right'}`}
+        style="
+          border-radius: 20px;
+          padding: 32px;
+          text-decoration: none;
+          color: inherit;
+          display: block;
+          position: relative;
+          overflow: hidden;
+        "
+      >
+        <div style={`
+          position: absolute; top: -40px; right: -40px;
+          width: 200px; height: 200px;
+          background: radial-gradient(circle, ${b.gradient}25 0%, transparent 70%);
+          filter: blur(20px);
+        `}></div>
 
-    <!-- Left: Text + Skills -->
-    <div class="reveal-left">
-      <p style="color: var(--text-2); font-size: 15px; line-height: 1.8; margin-bottom: 20px;">
-        I've spent 5+ years building native iOS apps — from GPS tracking engines and real-time ghost navigation
-        to AI-powered workflows. I specialize in <strong style="color: var(--text-1);">SwiftUI, SwiftData, and performance-critical mobile experiences</strong>
-        that feel native and polished.
-      </p>
-      <p style="color: var(--text-2); font-size: 15px; line-height: 1.8; margin-bottom: 32px;">
-        I work with <strong style="color: var(--accent);">Claude and ChatGPT</strong> as core development partners,
-        shipping faster and better than traditional workflows alone. My current project, FootSteps,
-        is live on the App Store with GPS trail recording, ghost navigation, and family sharing.
-      </p>
-
-      <!-- Skills -->
-      <div style="font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">
-        Technologies
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        {skills.map(skill => (
-          <span class="skill-tag">{skill}</span>
-        ))}
-      </div>
-    </div>
-
-    <!-- Right: Stat cards -->
-    <div class="reveal-right" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-      {stats.map((stat, i) => (
-        <div
-          class="glass"
-          style="
-            border-radius: 14px;
-            padding: 24px 20px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-          "
-          data-stat-target={stat.num}
-          data-stat-suffix={stat.suffix}
-        >
-          <div style="font-size: 26px; margin-bottom: 8px;">{stat.icon}</div>
-          <div
-            class="stat-number"
-            style="font-size: 32px; font-weight: 900; color: var(--accent); line-height: 1;"
-          >
-            0
+        <div style="position: relative;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+            <div style={`
+              width: 56px; height: 56px;
+              border-radius: 14px;
+              background: linear-gradient(135deg, ${b.gradient}, ${b.accent});
+              display: flex; align-items: center; justify-content: center;
+              font-family: 'Space Grotesk', sans-serif;
+              font-size: 22px; font-weight: 800; color: #fff;
+              box-shadow: 0 6px 20px ${b.gradient}40;
+            `}>
+              {b.name.charAt(0)}
+            </div>
+            <div>
+              <div style="font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">
+                {b.focus}
+              </div>
+              <div style="font-size: 20px; font-weight: 700; color: var(--text-1); font-family: 'Space Grotesk', sans-serif;">
+                {b.name}
+              </div>
+              <div style={`font-size: 13px; color: ${b.gradient}; margin-top: 2px; font-weight: 500;`}>
+                {b.role}
+              </div>
+            </div>
           </div>
-          <div style="font-size: 12px; color: var(--text-3); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
-            {stat.label}
+
+          <p style="color: var(--text-2); font-size: 14px; line-height: 1.7; margin-bottom: 20px; min-height: 84px;">
+            {b.bio}
+          </p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px;">
+            {b.skills.map(s => (
+              <span style={`
+                background: ${b.gradient}15;
+                border: 1px solid ${b.gradient}30;
+                color: ${b.gradient};
+                border-radius: 6px;
+                padding: 4px 10px;
+                font-size: 11px;
+                font-weight: 500;
+              `}>{s}</span>
+            ))}
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid var(--border-1);">
+            <span style="font-size: 12px; color: var(--text-3);">
+              {b.company}
+            </span>
+            <span style={`font-size: 13px; color: ${b.gradient}; font-weight: 600;`}>
+              View Portfolio →
+            </span>
           </div>
         </div>
-      ))}
-    </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Stat cards row -->
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+    {stats.map((stat, i) => (
+      <div
+        class="glass reveal-scale"
+        style="border-radius: 16px; padding: 24px 20px;"
+        data-stat-target={stat.num}
+        data-stat-suffix={stat.suffix}
+      >
+        <div style="font-size: 24px; margin-bottom: 8px;">{stat.icon}</div>
+        <div class="stat-number" style="font-size: 34px; font-weight: 900; font-family: 'Space Grotesk', sans-serif;" class:list={['gradient-text-1']}>
+          0
+        </div>
+        <div style="font-size: 11px; color: var(--text-3); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;">
+          {stat.label}
+        </div>
+      </div>
+    ))}
   </div>
 </section>
-
-<style>
-  .glass:hover { transform: translateY(-2px); }
-</style>
 
 <script>
   import gsap from 'gsap';
@@ -95,7 +155,6 @@ const stats = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animate stat counters on scroll
   document.querySelectorAll<HTMLElement>('[data-stat-target]').forEach((card) => {
     const target = parseInt(card.dataset.statTarget ?? '0');
     const suffix = card.dataset.statSuffix ?? '';
@@ -108,7 +167,7 @@ const stats = [
       onEnter: () => {
         gsap.to({ val: 0 }, {
           val: target,
-          duration: 1.4,
+          duration: 1.5,
           ease: 'power2.out',
           onUpdate: function () {
             numEl.textContent = Math.round(this.targets()[0].val) + suffix;

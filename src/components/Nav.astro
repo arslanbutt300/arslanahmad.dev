@@ -1,10 +1,10 @@
 ---
 const navLinks = [
-  { href: '/#about', label: 'About' },
+  { href: '/#about',    label: 'About Us' },
+  { href: '/arslan',    label: 'Arslan' },
+  { href: '/bilal',     label: 'M. Bilal' },
   { href: '/#projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/#services', label: 'Services' },
-  { href: '/labs', label: 'Labs' },
+  { href: '/blog',      label: 'Blog' },
 ];
 ---
 
@@ -19,63 +19,180 @@ const navLinks = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
-    padding: 0 48px;
-    height: 64px;
-    background: rgba(7, 7, 13, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    gap: 32px;
+    padding: 0 56px;
+    height: 72px;
+    background: color-mix(in srgb, var(--bg-0) 60%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid transparent;
     transition: all 0.3s ease;
   "
 >
-  <!-- Logo -->
-  <a href="/" style="font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--text-1);">
-    arslan<span style="color: var(--accent);">.</span><span style="color: var(--text-2);">dev</span>
+  <!-- LOGO -->
+  <a href="/" class="nav-logo" style="display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.5px;">
+    <span class="nav-cube" style="display: inline-block; transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);">
+      <svg width="34" height="34" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navTop" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#A39BFF"/><stop offset="100%" stop-color="#7268D6"/>
+          </linearGradient>
+          <linearGradient id="navLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7268D6"/><stop offset="100%" stop-color="#4A41A8"/>
+          </linearGradient>
+          <linearGradient id="navRight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#E8A578"/><stop offset="100%" stop-color="#B47550"/>
+          </linearGradient>
+        </defs>
+        <g transform="translate(20, 18)">
+          <polygon points="30,0 60,15 30,30 0,15" fill="url(#navTop)"/>
+          <polygon points="0,15 30,30 30,65 0,50" fill="url(#navLeft)"/>
+          <text x="8" y="48" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#fff" opacity="0.95" transform="skewY(-26.5)">&lt;/&gt;</text>
+          <polygon points="30,30 60,15 60,50 30,65" fill="url(#navRight)"/>
+          <line x1="36" y1="35" x2="56" y2="25" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+          <line x1="36" y1="44" x2="56" y2="34" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+          <line x1="36" y1="53" x2="56" y2="43" stroke="#7A4520" stroke-width="0.7" opacity="0.55"/>
+          <circle cx="30" cy="0" r="3.5" fill="#34d399"/>
+        </g>
+      </svg>
+    </span>
+    <span style="font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 17px;">
+      <span class="gradient-text-1">brain</span><span style="color: var(--text-3); margin: 0 3px; font-weight: 300;">&amp;</span><span class="gradient-text-2">bricks</span>
+    </span>
   </a>
 
-  <!-- Nav links -->
-  <div style="display: flex; gap: 32px; align-items: center;">
+  <!-- CLEAN NAV LINKS (no icons, generous spacing, underline animation) -->
+  <div class="hide-mobile nav-links-wrap" style="display: flex; gap: 40px; align-items: center;">
     {navLinks.map((link) => (
-      <a
-        href={link.href}
-        style="
-          font-size: 13px;
-          font-weight: 500;
-          color: var(--text-2);
-          transition: color 0.2s ease;
-          letter-spacing: 0.01em;
-        "
-        class="nav-link"
-      >
-        {link.label}
+      <a href={link.href} class="nav-link-clean">
+        <span class="nav-link-text">{link.label}</span>
       </a>
     ))}
   </div>
 
-  <!-- CTA -->
-  <a
-    href="/#contact"
-    style="
-      background: var(--accent);
-      color: #fff;
-      padding: 9px 20px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      letter-spacing: 0.01em;
-    "
-    class="nav-cta"
-  >
-    Hire Me →
+  <a href="/#contact" class="btn-primary nav-cta-3d hide-mobile" style="padding: 10px 22px; font-size: 13px; position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px;">
+    <span style="position: relative; z-index: 2;">Hire Us</span>
+    <svg class="nav-cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 2; transition: transform 0.3s ease;">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </svg>
   </a>
+
+  <!-- Mobile menu button -->
+  <button id="mobile-menu-toggle" aria-label="Menu" class="mobile-only" style="
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border-1);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    color: var(--text-1);
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  ">
+    <svg id="menu-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
 </nav>
 
-<!-- Nav scroll behavior + hover states -->
+<!-- Mobile drawer -->
+<div id="mobile-drawer" style="
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: color-mix(in srgb, var(--bg-0) 96%, transparent);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-1);
+  padding: 24px 20px;
+  z-index: 99;
+  transform: translateY(-110%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+">
+  {navLinks.map((link) => (
+    <a href={link.href} class="mobile-nav-link" style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-1);
+      transition: background 0.2s;
+    ">
+      <span>{link.label}</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--brand-1); opacity: 0.6;">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+  ))}
+  <a href="/#contact" class="btn-primary" style="justify-content: center; margin-top: 16px;">
+    Hire Us →
+  </a>
+</div>
+
 <style>
-  .nav-link:hover { color: var(--text-1) !important; }
-  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+  /* CLEAN NAV LINK — minimal text + animated underline */
+  .nav-link-clean {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 2px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-2);
+    letter-spacing: 0.2px;
+    transition: color 0.3s ease;
+  }
+  .nav-link-clean::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.7, 0, 0.3, 1);
+  }
+  .nav-link-clean:hover {
+    color: var(--text-1);
+  }
+  .nav-link-clean:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Logo cube tilts on hover */
+  .nav-logo:hover .nav-cube {
+    transform: rotateY(20deg) rotateX(-8deg) scale(1.1);
+  }
+
+  /* CTA shimmer */
+  .nav-cta-3d::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+  }
+  .nav-cta-3d:hover::before { transform: translateX(100%); }
+  .nav-cta-3d:hover .nav-cta-arrow { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .mobile-only { display: flex !important; }
+    #main-nav { padding: 0 20px !important; gap: 16px !important; }
+  }
+  .mobile-nav-link:hover { background: var(--bg-2); }
 </style>
 
 <script>
@@ -87,5 +204,19 @@ const navLinks = [
     } else {
       nav.classList.remove('nav-scrolled');
     }
+  });
+
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  let menuOpen = false;
+  toggle?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (drawer) drawer.style.transform = menuOpen ? 'translateY(0)' : 'translateY(-110%)';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(a => {
+    a.addEventListener('click', () => {
+      menuOpen = false;
+      if (drawer) drawer.style.transform = 'translateY(-110%)';
+    });
   });
 </script>

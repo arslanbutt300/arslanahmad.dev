@@ -1,0 +1,258 @@
+/* ============================================
+   BRAIN & BRICKS — THEME SYSTEM
+   ============================================
+   Switch the entire site's color scheme by changing
+   one class on <body>. Example:
+     <body class="theme-purple-brick">  ← current default
+     <body class="theme-neon-mint">
+     <body class="theme-ocean-amber">
+     <body class="theme-sunset-violet">
+     <body class="theme-cyber-rose">
+
+   Add a new theme: copy any block below, change the name + colors.
+   That's it — entire site updates instantly.
+   ============================================ */
+
+/* LIGHT — FROSTED SKY (cool, professional, SaaS-clean) */
+.theme-frosted-sky {
+  --brand-1: #2563eb;
+  --brand-1-dark: #1d4ed8;
+  --brand-2: #f59e0b;
+  --brand-2-dark: #b45309;
+  --brand-bond: #14b8a6;
+
+  --bg-0: #f6f9ff;
+  --bg-1: #eaf1fc;
+  --bg-2: #dde7f5;
+  --bg-3: #cbd9eb;
+  --bg-glass: rgba(255, 255, 255, 0.55);
+
+  --border-1: #c4d4e8;
+  --border-glow: rgba(37, 99, 235, 0.35);
+
+  --text-1: #0c1626;
+  --text-2: #455062;
+  --text-3: #8595aa;
+
+  --mesh-1: rgba(37, 99, 235, 0.10);
+  --mesh-2: rgba(245, 158, 11, 0.08);
+  --mesh-3: rgba(20, 184, 166, 0.06);
+}
+
+/* LIGHT — SANDSTONE MINT (warm beige + soft mint, designer studio feel) */
+.theme-sandstone-mint {
+  --brand-1: #0d9488;
+  --brand-1-dark: #0f766e;
+  --brand-2: #d97706;
+  --brand-2-dark: #92400e;
+  --brand-bond: #ec4899;
+
+  --bg-0: #fbf7ee;
+  --bg-1: #f5eedc;
+  --bg-2: #ede2c5;
+  --bg-3: #e1d2a6;
+  --bg-glass: rgba(255, 255, 255, 0.5);
+
+  --border-1: #d4c298;
+  --border-glow: rgba(13, 148, 136, 0.35);
+
+  --text-1: #1f1d12;
+  --text-2: #5a4f33;
+  --text-3: #9a8b62;
+
+  --mesh-1: rgba(13, 148, 136, 0.12);
+  --mesh-2: rgba(217, 119, 6, 0.10);
+  --mesh-3: rgba(236, 72, 153, 0.06);
+}
+
+/* LIGHT — PORCELAIN CREAM (warm, premium, editorial) */
+.theme-porcelain-cream {
+  /* Brand */
+  --brand-1: #5B52C8;        /* deeper purple for contrast on light */
+  --brand-1-dark: #3D34A0;
+  --brand-2: #C97D44;        /* warm brick */
+  --brand-2-dark: #94521C;
+  --brand-bond: #18a07c;     /* deeper green for contrast */
+
+  /* Backgrounds (light, layered) */
+  --bg-0: #faf6f0;           /* warm cream base */
+  --bg-1: #f3ede2;
+  --bg-2: #ece4d4;
+  --bg-3: #e3d8c2;
+  --bg-glass: rgba(255, 255, 255, 0.55);
+
+  /* Borders */
+  --border-1: #d6c9b1;
+  --border-glow: rgba(91, 82, 200, 0.35);
+
+  /* Text */
+  --text-1: #1a1610;
+  --text-2: #5a4d3a;
+  --text-3: #9a8b6f;
+
+  /* Mesh gradient (animated bg — subtle on light) */
+  --mesh-1: rgba(91, 82, 200, 0.10);
+  --mesh-2: rgba(201, 125, 68, 0.08);
+  --mesh-3: rgba(24, 160, 124, 0.06);
+}
+
+/* DARK — VERCEL MINT (premium SaaS, Linear / Vercel aesthetic) */
+.theme-vercel-mint {
+  --brand-1: #00D084;          /* signature green */
+  --brand-1-dark: #00A86B;
+  --brand-2: #7EE2B8;          /* soft mint */
+  --brand-2-dark: #4FB890;
+  --brand-bond: #00FFB2;       /* electric mint highlight */
+
+  --bg-0: #050505;             /* near-black */
+  --bg-1: #0A0A0A;
+  --bg-2: #111111;
+  --bg-3: #1A1A1A;
+  --bg-glass: rgba(255, 255, 255, 0.02);
+
+  --border-1: #1F1F1F;
+  --border-glow: rgba(0, 208, 132, 0.30);
+
+  --text-1: #FFFFFF;
+  --text-2: #A1A1A1;
+  --text-3: #6B6B6B;
+
+  --mesh-1: rgba(0, 208, 132, 0.15);
+  --mesh-2: rgba(126, 226, 184, 0.08);
+  --mesh-3: rgba(0, 255, 178, 0.05);
+}
+
+/* DEFAULT — PURPLE × BRICK (brain meets bricks) */
+.theme-purple-brick {
+  /* Brand */
+  --brand-1: #9D94FF;       /* primary accent (brain / code) */
+  --brand-1-dark: #5B52C8;
+  --brand-2: #E8A578;       /* secondary accent (brick / construction) */
+  --brand-2-dark: #A06038;
+  --brand-bond: #34d399;    /* the bond between (green) */
+
+  /* Backgrounds */
+  --bg-0: #07070d;          /* deepest */
+  --bg-1: #0d0d13;
+  --bg-2: #111118;
+  --bg-3: #1a1a23;
+  --bg-glass: rgba(255, 255, 255, 0.025);
+
+  /* Borders */
+  --border-1: #1a1a2a;
+  --border-glow: rgba(157, 148, 255, 0.3);
+
+  /* Text */
+  --text-1: #eeeeee;
+  --text-2: #9ca3b0;
+  --text-3: #5a5f6e;
+
+  /* Mesh gradient (animated bg) */
+  --mesh-1: rgba(157, 148, 255, 0.18);
+  --mesh-2: rgba(232, 165, 120, 0.12);
+  --mesh-3: rgba(52, 211, 153, 0.08);
+}
+
+/* NEON × MINT (cyberpunk / hacker aesthetic) */
+.theme-neon-mint {
+  --brand-1: #00ffd1;
+  --brand-1-dark: #00b894;
+  --brand-2: #ff5ec8;
+  --brand-2-dark: #d63384;
+  --brand-bond: #ffd60a;
+
+  --bg-0: #050810;
+  --bg-1: #0a0e1a;
+  --bg-2: #0f1424;
+  --bg-3: #161c30;
+  --bg-glass: rgba(0, 255, 209, 0.03);
+
+  --border-1: #1a1f2e;
+  --border-glow: rgba(0, 255, 209, 0.4);
+
+  --text-1: #ecfffd;
+  --text-2: #8ba5b0;
+  --text-3: #4a5f6e;
+
+  --mesh-1: rgba(0, 255, 209, 0.15);
+  --mesh-2: rgba(255, 94, 200, 0.12);
+  --mesh-3: rgba(255, 214, 10, 0.08);
+}
+
+/* OCEAN × AMBER (premium, corporate, trust) */
+.theme-ocean-amber {
+  --brand-1: #4f9cf9;
+  --brand-1-dark: #2563eb;
+  --brand-2: #f0b429;
+  --brand-2-dark: #b88a18;
+  --brand-bond: #5af0c0;
+
+  --bg-0: #060a12;
+  --bg-1: #0a0d18;
+  --bg-2: #0f1422;
+  --bg-3: #161c2e;
+  --bg-glass: rgba(255, 255, 255, 0.02);
+
+  --border-1: #1a1f2e;
+  --border-glow: rgba(79, 156, 249, 0.35);
+
+  --text-1: #e8edf5;
+  --text-2: #8b96a8;
+  --text-3: #4a5260;
+
+  --mesh-1: rgba(79, 156, 249, 0.18);
+  --mesh-2: rgba(240, 180, 41, 0.12);
+  --mesh-3: rgba(90, 240, 192, 0.08);
+}
+
+/* SUNSET × VIOLET (warm, bold, creative) */
+.theme-sunset-violet {
+  --brand-1: #c084fc;
+  --brand-1-dark: #7c3aed;
+  --brand-2: #fb7185;
+  --brand-2-dark: #be123c;
+  --brand-bond: #fbbf24;
+
+  --bg-0: #0a0612;
+  --bg-1: #110a1a;
+  --bg-2: #1a0f24;
+  --bg-3: #241530;
+  --bg-glass: rgba(192, 132, 252, 0.03);
+
+  --border-1: #2a1a3a;
+  --border-glow: rgba(192, 132, 252, 0.35);
+
+  --text-1: #f5ecff;
+  --text-2: #b09cb8;
+  --text-3: #6e5a78;
+
+  --mesh-1: rgba(192, 132, 252, 0.18);
+  --mesh-2: rgba(251, 113, 133, 0.14);
+  --mesh-3: rgba(251, 191, 36, 0.08);
+}
+
+/* CYBER × ROSE (futuristic, bold, statement) */
+.theme-cyber-rose {
+  --brand-1: #ff3d8b;
+  --brand-1-dark: #c8225e;
+  --brand-2: #00d4ff;
+  --brand-2-dark: #0099c8;
+  --brand-bond: #a3ff00;
+
+  --bg-0: #07070d;
+  --bg-1: #0d0a14;
+  --bg-2: #14101c;
+  --bg-3: #1f1828;
+  --bg-glass: rgba(255, 61, 139, 0.03);
+
+  --border-1: #2a1c2a;
+  --border-glow: rgba(255, 61, 139, 0.4);
+
+  --text-1: #ffeaf3;
+  --text-2: #b0859a;
+  --text-3: #6e5260;
+
+  --mesh-1: rgba(255, 61, 139, 0.18);
+  --mesh-2: rgba(0, 212, 255, 0.14);
+  --mesh-3: rgba(163, 255, 0, 0.08);
+}

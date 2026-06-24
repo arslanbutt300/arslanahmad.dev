@@ -4,49 +4,94 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog'))
+const allPosts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Classify each post as ios | precast based on tags
+const classify = (post: any): 'ios' | 'precast' => {
+  const tags = post.data.tags.map((t: string) => t.toLowerCase());
+  const isPrecast = tags.some((t: string) =>
+    t.includes('precast') || t.includes('qc') || t.includes('concrete') ||
+    t.includes('hollow') || t.includes('mix') || t.includes('materials') ||
+    t.includes('inspection')
+  );
+  return isPrecast ? 'precast' : 'ios';
+};
+
+const posts = allPosts.map(p => ({ ...p, _category: classify(p) }));
+const iosCount = posts.filter(p => p._category === 'ios').length;
+const precastCount = posts.filter(p => p._category === 'precast').length;
 ---
 
-<BaseLayout title="Blog — Arslan Ahmad" description="iOS development, SwiftUI deep dives, AI-assisted workflows, and lessons from shipping apps.">
+<BaseLayout title="Blog — Brain & Bricks" description="iOS development, SwiftUI deep dives, AI workflows, precast quality control, and lessons from shipping things — digital and physical.">
   <Nav />
-  <main style="padding: 120px 48px 80px; max-width: 800px; margin: 0 auto;">
-    <div style="margin-bottom: 56px;">
-      <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+  <main style="padding: 120px 24px 80px; max-width: 880px; margin: 0 auto;">
+    <div style="margin-bottom: 40px;">
+      <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
         Writing
       </div>
       <h1 style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 12px;">Blog</h1>
-      <p style="color: var(--text-2); font-size: 15px;">
-        iOS development, SwiftUI deep dives, AI workflows, and shipping apps.
+      <p style="color: var(--text-2); font-size: 15px; line-height: 1.7; max-width: 640px;">
+        Two crafts, one publication. iOS development, SwiftUI deep dives, and AI workflows from Arslan.
+        Precast quality control, materials testing, and field inspection from Bilal.
       </p>
+    </div>
+
+    <!-- Category filter -->
+    <div class="blog-filter" id="blog-filter" role="tablist">
+      <button class="filter-btn is-active" data-cat="all" role="tab">
+        <span class="filter-label">All</span>
+        <span class="filter-count">{posts.length}</span>
+      </button>
+      <button class="filter-btn" data-cat="ios" role="tab">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2"/>
+          <line x1="12" y1="18" x2="12" y2="18.01"/>
+        </svg>
+        <span class="filter-label">iOS &amp; Dev</span>
+        <span class="filter-count">{iosCount}</span>
+      </button>
+      <button class="filter-btn" data-cat="precast" role="tab">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="8" width="6" height="8"/>
+          <rect x="10" y="4" width="6" height="12"/>
+          <rect x="17" y="10" width="4" height="6"/>
+        </svg>
+        <span class="filter-label">Precast &amp; QC</span>
+        <span class="filter-count">{precastCount}</span>
+      </button>
     </div>
 
     {posts.length === 0 ? (
       <p style="color: var(--text-2);">First posts coming soon.</p>
     ) : (
-      <div style="display: flex; flex-direction: column; gap: 0;">
-        {posts.map((post, i) => (
+      <div id="post-list" style="display: flex; flex-direction: column; gap: 0;">
+        {posts.map((post) => (
           <a
             href={`/blog/${post.id}`}
+            class="post-row"
+            data-cat={post._category}
             style={`
               display: flex;
               align-items: flex-start;
               gap: 20px;
               padding: 24px 0;
-              border-bottom: 1px solid var(--border);
+              border-bottom: 1px solid var(--border-1);
               transition: all 0.2s ease;
               text-decoration: none;
             `}
-            class="post-row"
           >
             <div style="font-size: 32px; flex-shrink: 0; width: 48px; text-align: center; margin-top: 2px;">
               {post.data.emoji}
             </div>
-            <div style="flex: 1;">
-              <div style="display: flex; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; align-items: center;">
+                <span class={`post-cat post-cat-${post._category}`}>
+                  {post._category === 'ios' ? 'iOS' : 'Precast'}
+                </span>
                 {post.data.tags.slice(0, 2).map(tag => (
-                  <span style="font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;">
+                  <span style="font-size: 10px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px;">
                     {tag}
                   </span>
                 ))}
@@ -72,6 +117,104 @@ const posts = (await getCollection('blog'))
 </BaseLayout>
 
 <style>
-  .post-row:hover h2 { color: var(--accent) !important; }
-  .post-row:hover { background: rgba(127,119,221,0.02); }
+  .post-row:hover h2 { color: var(--brand-1) !important; }
+  .post-row:hover { background: color-mix(in srgb, var(--brand-1) 3%, transparent); }
+  .post-row.is-hidden { display: none !important; }
+
+  .blog-filter {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-1);
+    border-radius: 14px;
+    backdrop-filter: blur(14px);
+    margin-bottom: 32px;
+  }
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: inherit;
+  }
+  .filter-btn:hover { color: var(--text-1); background: color-mix(in srgb, var(--brand-1) 6%, transparent); }
+  .filter-btn.is-active {
+    background: linear-gradient(135deg, var(--brand-1), var(--brand-1-dark));
+    color: #fff;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--brand-1) 30%, transparent);
+  }
+  .filter-count {
+    background: rgba(255,255,255,0.16);
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .filter-btn:not(.is-active) .filter-count {
+    background: color-mix(in srgb, var(--text-3) 18%, transparent);
+    color: var(--text-3);
+  }
+
+  .post-cat {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .post-cat-ios {
+    color: var(--brand-1);
+    background: color-mix(in srgb, var(--brand-1) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-1) 25%, transparent);
+  }
+  .post-cat-precast {
+    color: var(--brand-2);
+    background: color-mix(in srgb, var(--brand-2) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--brand-2) 25%, transparent);
+  }
 </style>
+
+<script>
+  const filter = document.getElementById('blog-filter');
+  const list = document.getElementById('post-list');
+
+  // Apply category from URL on load
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get('cat') || 'all';
+
+  function applyFilter(cat: string) {
+    filter?.querySelectorAll('.filter-btn').forEach(b => {
+      const btn = b as HTMLButtonElement;
+      btn.classList.toggle('is-active', btn.dataset.cat === cat);
+    });
+    list?.querySelectorAll('.post-row').forEach(r => {
+      const row = r as HTMLAnchorElement;
+      const matches = cat === 'all' || row.dataset.cat === cat;
+      row.classList.toggle('is-hidden', !matches);
+    });
+    // Sync URL (no page reload)
+    const url = new URL(window.location.href);
+    if (cat === 'all') url.searchParams.delete('cat');
+    else url.searchParams.set('cat', cat);
+    history.replaceState({}, '', url.toString());
+  }
+
+  applyFilter(initial);
+
+  filter?.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('.filter-btn') as HTMLButtonElement | null;
+    if (!target) return;
+    applyFilter(target.dataset.cat || 'all');
+  });
+</script>

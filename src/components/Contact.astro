@@ -3,17 +3,17 @@
 
 <section
   id="contact"
-  style="padding: 100px 48px; border-top: 1px solid var(--border);"
+  style="padding: 120px 48px; border-top: 1px solid var(--border-1);"
 >
-  <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+  <div style="max-width: 640px; margin: 0 auto; text-align: center;">
     <div class="reveal">
-      <div style="font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">
+      <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; font-weight: 600;">
         Contact
       </div>
-      <h2 style="font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px;">Let's Build Something.</h2>
-      <p style="color: var(--text-2); font-size: 15px; line-height: 1.75; margin-bottom: 48px;">
-        Available for iOS freelance projects, consulting, and technical collaborations.
-        Reach out and I'll reply within 24 hours.
+      <h2 style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px; font-family: 'Space Grotesk', sans-serif;">Let's <span class="gradient-text">build</span> something.</h2>
+      <p style="color: var(--text-2); font-size: 16px; line-height: 1.75; margin-bottom: 48px;">
+        Available for iOS development, QC inspection consulting, and full project builds.
+        Reach out at <a href="mailto:hello@brainandbricks.com" style="color: var(--brand-1); font-weight: 600;">hello@brainandbricks.com</a> — we'll reply within 24 hours.
       </p>
     </div>
 
@@ -34,8 +34,8 @@
             required
             style="
               width: 100%;
-              background: var(--bg-2);
-              border: 1px solid var(--border);
+              background: var(--bg-1);
+              border: 1px solid var(--border-1);
               border-radius: 8px;
               padding: 12px 14px;
               font-size: 14px;
@@ -56,8 +56,8 @@
             required
             style="
               width: 100%;
-              background: var(--bg-2);
-              border: 1px solid var(--border);
+              background: var(--bg-1);
+              border: 1px solid var(--border-1);
               border-radius: 8px;
               padding: 12px 14px;
               font-size: 14px;
@@ -80,8 +80,8 @@
           required
           style="
             width: 100%;
-            background: var(--bg-2);
-            border: 1px solid var(--border);
+            background: var(--bg-1);
+            border: 1px solid var(--border-1);
             border-radius: 8px;
             padding: 12px 14px;
             font-size: 14px;
@@ -97,33 +97,19 @@
 
       <button
         type="submit"
-        style="
-          background: var(--accent);
-          color: #fff;
-          padding: 14px 28px;
-          border-radius: 10px;
-          font-size: 14px;
-          font-weight: 700;
-          border: none;
-          cursor: pointer;
-          transition: opacity 0.2s, transform 0.2s;
-          font-family: inherit;
-          letter-spacing: 0.01em;
-          width: 100%;
-        "
-        class="submit-btn"
+        class="btn-primary"
+        style="border: none; cursor: pointer; font-family: inherit; width: 100%; justify-content: center; padding: 16px 28px; font-size: 14px; font-weight: 700;"
       >
         Send Message →
       </button>
     </form>
 
-    <!-- Social links -->
-    <div class="reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 48px;">
+    <div class="reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 48px; flex-wrap: wrap;">
       {[
         { label: 'GitHub', href: 'https://github.com/arslanbutt300' },
         { label: 'LinkedIn', href: '#' },
         { label: 'Twitter/X', href: '#' },
-        { label: 'Email', href: 'mailto:hello@arslanahmad.dev' },
+        { label: 'hello@brainandbricks.com', href: 'mailto:hello@brainandbricks.com' },
       ].map(link => (
         <a
           href={link.href}
@@ -138,8 +124,7 @@
 </section>
 
 <style>
-  .form-input:focus { border-color: var(--accent) !important; }
+  .form-input:focus { border-color: var(--brand-1) !important; }
   .form-input::placeholder { color: var(--text-3); }
-  .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-  .social-link:hover { color: var(--accent) !important; }
+  .social-link:hover { color: var(--brand-1) !important; }
 </style>

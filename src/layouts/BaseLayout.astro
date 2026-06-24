@@ -1,19 +1,22 @@
 ---
 import '../styles/global.css';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  theme?: 'vercel-mint' | 'purple-brick' | 'neon-mint' | 'ocean-amber' | 'sunset-violet' | 'cyber-rose' | 'porcelain-cream' | 'frosted-sky' | 'sandstone-mint';
 }
 
 const {
-  title = 'Arslan Ahmad — Lead iOS Developer',
-  description = 'Lead iOS Developer building high-performance apps with SwiftUI. Creator of FootSteps. AI-first developer based in Pakistan.',
+  title = 'Brain & Bricks — Built with brain and bricks.',
+  description = 'Two brothers, two crafts. iOS development and structural QC. Where intelligence meets structure — code and concrete, designed to last.',
   image = '/og-image.png',
+  theme = 'vercel-mint',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://arslanahmad.dev');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://brainandbricks.com');
 ---
 
 <!doctype html>
@@ -22,43 +25,44 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://arslanah
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="author" content="Arslan Ahmad" />
+    <meta name="author" content="Brain & Bricks" />
+    <meta name="theme-color" content="#9D94FF" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brain & Bricks" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site ?? 'https://arslanahmad.dev')} />
+    <meta property="og:image" content={new URL(image, Astro.site ?? 'https://brainandbricks.com')} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.site ?? 'https://arslanahmad.dev')} />
+    <meta name="twitter:image" content={new URL(image, Astro.site ?? 'https://brainandbricks.com')} />
 
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <!-- Inter font via Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <title>{title}</title>
   </head>
 
-  <body>
-    <!-- Cursor glow that follows mouse -->
+  <body class={`theme-${theme}`}>
     <div class="cursor-glow" id="cursor-glow"></div>
+    <div style="position:relative; z-index:1;">
+      <slot />
+    </div>
+    <ThemeSwitcher />
 
-    <slot />
-
-    <!-- Lenis smooth scroll + GSAP global setup -->
     <script>
       import Lenis from 'lenis';
       import gsap from 'gsap';
@@ -66,7 +70,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://arslanah
 
       gsap.registerPlugin(ScrollTrigger);
 
-      // Smooth scroll
       const lenis = new Lenis({
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -78,57 +81,65 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://arslanah
       }
       requestAnimationFrame(raf);
 
-      // Keep GSAP ScrollTrigger in sync with Lenis
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => { lenis.raf(time * 1000); });
       gsap.ticker.lagSmoothing(0);
 
-      // Cursor glow
+      // Magnetic cursor glow
       const cursorGlow = document.getElementById('cursor-glow');
       if (cursorGlow) {
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
         document.addEventListener('mousemove', (e) => {
-          cursorGlow.style.left = e.clientX + 'px';
-          cursorGlow.style.top = e.clientY + 'px';
+          mouseX = e.clientX;
+          mouseY = e.clientY;
         });
+        function animateGlow() {
+          glowX += (mouseX - glowX) * 0.12;
+          glowY += (mouseY - glowY) * 0.12;
+          if (cursorGlow) {
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+          }
+          requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
       }
 
-      // Global reveal animations
+      // Reveal animations
       gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-          },
-        });
+        gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
       });
-
       gsap.utils.toArray<HTMLElement>('.reveal-left').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          x: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-          },
-        });
+        gsap.to(el, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+      gsap.utils.toArray<HTMLElement>('.reveal-right').forEach((el) => {
+        gsap.to(el, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+      gsap.utils.toArray<HTMLElement>('.reveal-scale').forEach((el) => {
+        gsap.to(el, { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+      gsap.utils.toArray<HTMLElement>('.reveal-blur').forEach((el) => {
+        gsap.to(el, { opacity: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
       });
 
-      gsap.utils.toArray<HTMLElement>('.reveal-right').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          x: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-          },
+      // 3D tilt cards
+      gsap.utils.toArray<HTMLElement>('.tilt-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y / rect.height) - 0.5) * -10;
+          const rotateY = ((x / rect.width) - 0.5) * 10;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)';
         });
       });
     </script>

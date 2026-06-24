@@ -1,0 +1,513 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const skills = {
+  'Core iOS': ['Swift', 'Objective-C', 'Xcode', 'UIKit', 'SwiftUI', 'iOS SDK', 'SwiftData'],
+  'Architecture': ['MVVM', 'Design Patterns', 'rxSwift', 'Storyboards', 'Autolayouts', 'Cocoapods', 'SPM'],
+  'APIs & Data': ['REST API', 'JSON Parsing', 'WebSocket', 'Data Modeling', 'Postman', 'GraphQL'],
+  'SDKs & Services': ['Firebase', 'HealthKit', 'MapKit', 'MLKit', 'WatchKit', 'Push Notifications', 'In-App Purchases', 'Polar SDK', 'Supabase'],
+  'Security': ['Jailbreak Detection', 'AES-256 Encryption', 'SSL Pinning', 'Secure Enclave', 'Keychain', 'Obfuscation'],
+  'AI & Tools': ['Claude API', 'AI-Assisted Dev', 'GitHub Actions', 'Fastlane', 'TestFlight', 'App Store Connect'],
+};
+
+const experience = [
+  {
+    date: 'Dec 2022 — Present',
+    company: 'Ozoned Digital · Lahore',
+    role: 'Principal iOS Engineer',
+    badges: ['👥 Team Lead · 2+ Members', '🏆 Employee of the Month · 2023'],
+    projects: [
+      {
+        name: 'Enterprise Health & Wellness Platform',
+        desc: 'Health & wellness iOS app with real-time HealthKit integration, custom dashboards, graphs, and SDK integrations. Under NDA.',
+        tech: ['Swift', 'HealthKit', 'REST APIs', 'Graphs', 'Custom SDKs'],
+        url: null,
+      },
+      {
+        name: 'Insurance Platform (Africa-wide)',
+        desc: 'Enterprise iOS platform for a major insurer across East & Central Africa. Security-hardened with jailbreak detection, encryption, SSL pinning. Under NDA.',
+        tech: ['Swift', 'REST APIs', 'Security', 'SSL Pinning', 'Encryption'],
+        url: null,
+      },
+      {
+        name: 'Digital Agents Portal',
+        desc: 'State-of-the-art portal for insurance agents to manage operations and serve customers at scale. Under NDA.',
+        tech: ['Swift', 'REST APIs', 'Graphs', 'Security'],
+        url: null,
+      },
+    ],
+  },
+  {
+    date: 'Jan 2019 — Dec 2022',
+    company: 'Mobizion · Daska',
+    role: 'Mobile App Developer (iOS)',
+    badges: [],
+    projects: [
+      { name: 'TravelDiv', desc: 'Places search and hotel booking app with account-free booking.', tech: ['Swift', 'rxSwift', 'Sockets'], url: 'https://apps.apple.com/pk/app/%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D9%84-%D8%AF%D9%8A%D9%81-%D9%86%D8%B5%D8%A7%D8%A6%D8%AD-%D8%B3%D9%8A%D8%A7%D8%AD%D9%8A%D8%A9/id1426181755' },
+      { name: 'Collage Maker', desc: 'Feature-rich photo collage maker with themed template categories.', tech: ['Swift', 'Objective-C', 'PaintCode'], url: 'https://apps.apple.com/pk/app/picture-collage-photo-editor/id1458000926' },
+      { name: 'Cut Paste Photos Pro', desc: 'Advanced cut-and-paste photo editor with Rotate, Scale, Flip tools.', tech: ['Swift', 'Objective-C', 'Firebase'], url: 'https://apps.apple.com/pk/app/cut-paste-photos-pro-edit-chop/id685783026' },
+      { name: 'Video Editor / zShot', desc: 'All-in-one suite combining video editing, collage, slideshow, and document scanning.', tech: ['Swift', 'Objective-C', 'Firebase'], url: 'https://apps.apple.com/pk/app/add-music-to-video-zshot/id1436429879' },
+      { name: 'iColor', desc: 'Adult coloring app with hundreds of images and custom page creation.', tech: ['Swift', 'Objective-C'], url: 'https://apps.apple.com/pk/app/icolor-club-coloring-book-and-pages-for-adults/id1211477404' },
+      { name: 'ThoughtCast', desc: 'Mentalist tool paired with sensor board for real-time audience display.', tech: ['Swift', 'iSkin SDK'], url: 'https://apps.apple.com/pk/app/thoughtcast/id1311918486' },
+      { name: 'E-Perform', desc: 'Fitness tracking app integrating Polar devices for heart rate and calories.', tech: ['Swift', 'SwiftUI', 'Polar SDK'], url: null },
+      { name: 'Hidden Camera Detector', desc: 'ML-powered app detecting cameras, routers, and network devices.', tech: ['Swift', 'MLKit', 'Python'], url: null },
+    ],
+  },
+];
+
+const personalProjects = [
+  {
+    name: 'FootSteps',
+    status: 'LIVE',
+    desc: 'GPS trail tracking iOS app with ghost navigation. SwiftUI + SwiftData + Google Maps + Supabase + Firebase. Currently shipping v1.3 with push notifications, trail sharing, and family integration.',
+    tech: ['SwiftUI', 'SwiftData', 'Google Maps', 'Supabase', 'Firebase', 'Universal Links'],
+    site: 'https://footsteps.brainandbricks.com',
+    github: 'https://github.com/arslanbutt300/FootSteps',
+  },
+  {
+    name: 'HisabPro',
+    status: 'IN DEV',
+    desc: 'UAE bookkeeping & VAT app for small businesses. Built with SwiftUI + SwiftData. VAT compliance, receipts, and tax reports.',
+    tech: ['SwiftUI', 'SwiftData', 'PDF Generation', 'VAT Logic'],
+    github: 'https://github.com/arslanbutt300/HisabPro',
+  },
+  {
+    name: 'Prism',
+    status: 'CONCEPT',
+    desc: 'iOS app exploring spectral / visual effects. Built as a creative coding experiment.',
+    tech: ['Swift', 'Metal', 'Core Image'],
+    github: 'https://github.com/arslanbutt300/Prism',
+  },
+  {
+    name: 'Brain & Bricks',
+    status: 'YOU\'RE HERE',
+    desc: 'This site — built with Astro 6, Tailwind v4, GSAP, and deployed on Cloudflare Workers. Open source and AI-collaborative.',
+    tech: ['Astro', 'Tailwind', 'GSAP', 'Cloudflare'],
+    site: 'https://brainandbricks.com',
+  },
+  {
+    name: 'More coming soon',
+    status: 'WIP',
+    desc: 'A new iOS app is in early planning. Want to be the first to know? Subscribe via the contact form.',
+    tech: ['Coming', 'Soon'],
+    placeholder: true,
+  },
+];
+
+const security = [
+  { icon: '🔒', title: 'Jailbreak Detection', desc: 'Up-to-date detection covering the latest bypass tools, protecting financial data from compromised devices.' },
+  { icon: '🔐', title: 'Data Encryption', desc: 'End-to-end encryption using AES-256 and CryptoKit, meeting financial industry compliance standards.' },
+  { icon: '📡', title: 'SSL Pinning', desc: 'Certificate and public key pinning to prevent MITM attacks on REST API communications.' },
+  { icon: '🗝️', title: 'Secure Storage', desc: 'iOS Keychain and Secure Enclave for tokens and credentials — never in UserDefaults.' },
+  { icon: '🛡️', title: 'Code Obfuscation', desc: 'Protecting business logic and API keys from reverse engineering and static analysis.' },
+  { icon: '🧪', title: 'Security Testing', desc: 'Proactive vulnerability assessments with security checks integrated into CI/CD pipelines.' },
+];
+---
+
+<BaseLayout
+  title="Arslan Ahmad — Principal iOS Engineer · Brain & Bricks"
+  description="Principal iOS Engineer with 6+ years of experience. Currently shipping FootSteps and enterprise iOS work. AI-first developer. Co-founder of Brain & Bricks."
+>
+  <Nav />
+
+  <main style="padding-top: 68px;">
+    <!-- HERO — Premium SaaS treatment -->
+    <section class="portfolio-hero" data-side="brain">
+      <div class="portfolio-grid">
+        <div class="portfolio-text reveal-left">
+          <div class="badge" style="margin-bottom: 24px;">
+            <div class="pulse-dot"></div>
+            Open to opportunities
+          </div>
+          <h1 class="portfolio-name">
+            Arslan<br/><span class="gradient-text-1">Ahmad.</span>
+          </h1>
+          <p class="portfolio-role">
+            Principal iOS Engineer · 6+ Years Experience
+          </p>
+          <p class="portfolio-bio">
+            From creative media apps to enterprise insurance platforms — building software that matters.
+            Swift, SwiftUI, security hardening, and complex SDK integrations.
+          </p>
+          <div class="portfolio-ctas">
+            <a href="#experience" class="btn-primary">View My Work →</a>
+            <a href="/#contact" class="btn-ghost">Get In Touch</a>
+          </div>
+          <div class="portfolio-award glass">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--brand-bond);">
+              <path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18"/>
+              <path d="M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+              <path d="M18 2H6v7a6 6 0 0012 0V2z"/>
+            </svg>
+            <div>
+              <div class="portfolio-award-title">Employee of the Month</div>
+              <div class="portfolio-award-sub">Ozoned Digital · 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium portrait with halo + cube + rim glow + floating -->
+        <div class="portfolio-image-col reveal-right">
+          <div class="portfolio-backplate" aria-hidden="true">
+            <div class="portfolio-glow"></div>
+            <div class="portfolio-cube spin-slow-3d">
+              <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="120,10 220,60 120,110 20,60" fill="var(--brand-1)" opacity="0.7"/>
+                <polygon points="20,60 120,110 120,220 20,170" fill="var(--brand-1-dark)" opacity="0.85"/>
+                <polygon points="120,110 220,60 220,170 120,220" fill="var(--brand-2)" opacity="0.7"/>
+                <circle cx="120" cy="10" r="8" fill="var(--brand-bond)"/>
+              </svg>
+            </div>
+          </div>
+          <div class="portfolio-image-wrap">
+            <img src="/arslan-cutout.png" alt="Arslan Ahmad" class="portfolio-portrait" loading="eager" fetchpriority="high"/>
+            <div class="portfolio-bottom-fade"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .portfolio-hero {
+        padding: 100px 48px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .portfolio-grid {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .portfolio-name {
+        font-size: clamp(48px, 7vw, 84px);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -2.5px;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      .portfolio-role {
+        font-size: 18px;
+        color: var(--text-2);
+        margin-top: 18px;
+      }
+      .portfolio-bio {
+        font-size: 15px;
+        color: var(--text-2);
+        line-height: 1.75;
+        margin-top: 16px;
+        max-width: 520px;
+      }
+      .portfolio-ctas {
+        display: flex;
+        gap: 12px;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+      .portfolio-award {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 28px;
+        padding: 14px 20px;
+        border-radius: 14px;
+        border-color: color-mix(in srgb, var(--brand-bond) 30%, transparent) !important;
+      }
+      .portfolio-award-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--brand-bond);
+      }
+      .portfolio-award-sub {
+        font-size: 12px;
+        color: var(--text-3);
+        margin-top: 2px;
+      }
+
+      .portfolio-image-col {
+        position: relative;
+        min-height: 540px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .portfolio-backplate {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        pointer-events: none;
+      }
+      .portfolio-glow {
+        position: absolute;
+        width: 600px; height: 600px; max-width: 90vw;
+        border-radius: 50%;
+        background: radial-gradient(circle at center,
+          color-mix(in srgb, var(--brand-1) 22%, transparent) 0%,
+          color-mix(in srgb, var(--brand-1) 8%, transparent) 30%,
+          transparent 60%);
+        filter: blur(40px);
+      }
+      .portfolio-cube {
+        position: absolute;
+        width: 380px; height: 380px; max-width: 70vw;
+        opacity: 0.10;
+        filter: drop-shadow(0 0 40px color-mix(in srgb, var(--brand-1) 50%, transparent));
+        transform-style: preserve-3d;
+        perspective: 1200px;
+      }
+      .portfolio-cube svg { width: 100%; height: 100%; }
+      .portfolio-image-wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 2/3;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        animation: heroFloat 6s ease-in-out infinite;
+      }
+      .portfolio-portrait {
+        width: 100%;
+        height: auto;
+        max-height: 110%;
+        object-fit: contain;
+        object-position: bottom center;
+        mix-blend-mode: lighten;
+        filter:
+          drop-shadow(0 35px 60px rgba(0,0,0,0.7))
+          drop-shadow(0 -6px 28px color-mix(in srgb, var(--brand-1) 30%, transparent));
+        -webkit-mask-image: radial-gradient(ellipse 75% 90% at center 55%, #000 0%, #000 45%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,0.4) 82%, transparent 100%);
+        mask-image: radial-gradient(ellipse 75% 90% at center 55%, #000 0%, #000 45%, rgba(0,0,0,0.85) 65%, rgba(0,0,0,0.4) 82%, transparent 100%);
+      }
+      .portfolio-bottom-fade {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: 18%;
+        background: linear-gradient(0deg, var(--bg-0) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      @media (max-width: 1024px) {
+        .portfolio-hero { padding: 100px 20px 40px; }
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          text-align: center;
+        }
+        .portfolio-image-col {
+          order: -1;
+          min-height: 380px;
+        }
+        .portfolio-image-wrap { max-width: 320px; }
+        .portfolio-glow { width: 380px; height: 380px; }
+        .portfolio-cube { width: 280px; height: 280px; }
+        .portfolio-text { display: flex; flex-direction: column; align-items: center; }
+        .portfolio-bio { text-align: center; }
+        .portfolio-ctas { justify-content: center; }
+      }
+    </style>
+
+    <!-- SKILLS -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Expertise</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Skills &amp; Technologies</h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 560px;">A full-stack iOS skill set built across creative apps, enterprise insurance, and security-critical financial platforms.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          {Object.entries(skills).map(([cat, tags]) => (
+            <div class="glass reveal-scale tilt-card" style="border-radius: 16px; padding: 24px;">
+              <div style="font-size: 11px; color: var(--brand-1); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600;">{cat}</div>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                {tags.map(t => <span class="skill-tag">{t}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Work History</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Experience</h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 560px;">From creative media apps to enterprise insurance platforms — building software that matters.</p>
+        </div>
+
+        {experience.map(exp => (
+          <div class="reveal" style="display: grid; grid-template-columns: 200px 1fr; gap: 32px; margin-bottom: 56px; position: relative;">
+            <div style="position: sticky; top: 100px; align-self: start;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-3); margin-bottom: 6px;">{exp.date}</div>
+              <div style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">{exp.company}</div>
+              <div style="font-size: 13px; color: var(--brand-1); font-weight: 500; margin-bottom: 12px;">{exp.role}</div>
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                {exp.badges.map(b => (
+                  <span style="display: inline-block; background: color-mix(in srgb, var(--brand-bond) 8%, transparent); border: 1px solid color-mix(in srgb, var(--brand-bond) 25%, transparent); border-radius: 8px; padding: 4px 10px; font-size: 11px; color: var(--brand-bond); font-weight: 500;">{b}</span>
+                ))}
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px;">
+              {exp.projects.map(p => (
+                <div class="glass tilt-card" style="border-radius: 14px; padding: 22px;">
+                  <div style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text-1);">{p.name}</div>
+                  <div style="font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; min-height: 60px;">{p.desc}</div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px;">
+                    {p.tech.map(t => <span style="background: var(--bg-3); border: 1px solid var(--border-1); border-radius: 4px; padding: 2px 8px; font-size: 10px; color: var(--text-3);">{t}</span>)}
+                  </div>
+                  {p.url && (
+                    <a href={p.url} target="_blank" style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--brand-1); font-weight: 600;">
+                       View on App Store →
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PERSONAL PROJECTS -->
+    <section id="personal" style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Side Projects</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Personal <span class="gradient-text-2">Projects</span></h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 560px;">What I build outside the 9–5 — independent apps and experiments.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+          {personalProjects.map(p => (
+            <div class={`glass tilt-card reveal-scale ${p.placeholder ? 'gradient-border' : ''}`} style="border-radius: 18px; padding: 28px; position: relative;">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 14px;">
+                <h3 style="font-size: 20px; font-weight: 800; font-family: 'Space Grotesk', sans-serif;">{p.name}</h3>
+                <span style="font-size: 9px; padding: 3px 8px; border-radius: 4px; font-weight: 700; letter-spacing: 1px; background: color-mix(in srgb, var(--brand-bond) 15%, transparent); color: var(--brand-bond); border: 1px solid color-mix(in srgb, var(--brand-bond) 30%, transparent);">{p.status}</span>
+              </div>
+              <p style="font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 16px;">{p.desc}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 16px;">
+                {p.tech.map(t => <span style="background: var(--bg-3); border: 1px solid var(--border-1); border-radius: 4px; padding: 2px 8px; font-size: 10px; color: var(--text-3);">{t}</span>)}
+              </div>
+              <div style="display: flex; gap: 12px;">
+                {p.site && <a href={p.site} target="_blank" style="font-size: 12px; color: var(--brand-1); font-weight: 600;">Visit →</a>}
+                {p.github && <a href={p.github} target="_blank" style="font-size: 12px; color: var(--text-2); font-weight: 500;">GitHub →</a>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-FIRST WORKFLOW -->
+    <section id="ai" style="padding: 80px 48px; border-top: 1px solid var(--border-1); position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; pointer-events: none;">
+        <div style="position: absolute; top: 20%; left: 10%; width: 400px; height: 400px; background: radial-gradient(circle, var(--mesh-1) 0%, transparent 70%); filter: blur(50px);"></div>
+        <div style="position: absolute; bottom: 10%; right: 5%; width: 350px; height: 350px; background: radial-gradient(circle, var(--mesh-3) 0%, transparent 70%); filter: blur(50px);"></div>
+      </div>
+      <div style="max-width: 1200px; margin: 0 auto; position: relative;">
+        <div class="reveal" style="margin-bottom: 48px; max-width: 720px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: color-mix(in srgb, var(--brand-bond) 12%, transparent); border: 1px solid color-mix(in srgb, var(--brand-bond) 30%, transparent); border-radius: 20px; padding: 5px 14px; font-size: 11px; color: var(--brand-bond); margin-bottom: 14px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">
+            <span class="pulse-dot"></span>
+            AI-First Engineer
+          </div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">
+            Shipping with <span class="gradient-text-1">AI as my dev partner.</span>
+          </h2>
+          <p style="color: var(--text-2); margin-top: 14px; max-width: 620px; font-size: 15px; line-height: 1.7;">
+            I don't just use AI tools — I build with them every day. Claude Code, MCP servers, prompt-driven workflows, and custom AI agents are part of how I architect and ship.
+            This is what 3× faster development actually looks like in practice.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px;">
+          {[
+            { icon: '🤖', title: 'Claude Code', desc: 'Daily collaborator for architecture decisions, code review, refactoring, and shipping features. Treat AI as a senior peer.', tags: ['Claude Opus', 'CLI', 'Subagents'] },
+            { icon: '🔌', title: 'MCP Servers', desc: 'Custom Model Context Protocol servers connecting AI to project context — git, APIs, design systems, and live preview.', tags: ['MCP', 'Tools', 'Integration'] },
+            { icon: '⚡', title: 'AI-Native Workflows', desc: 'Spec-driven development, AI code review, automated PR descriptions, design-to-code pipelines, and prompt-engineered solutions.', tags: ['Workflows', 'Automation', 'CI/CD'] },
+            { icon: '🧠', title: 'Custom AI Agents', desc: 'Building specialized iOS agents — code reviewers, test generators, App Store metadata writers, and project planners.', tags: ['Agents', 'Specialized', 'Production'] },
+            { icon: '📐', title: 'Spec-First Engineering', desc: 'Writing specs that AI executes against. Less prompting, more structured handoff. Repeatable shipping at higher velocity.', tags: ['Specs', 'Planning', 'Architecture'] },
+            { icon: '🔄', title: 'AI Pair Programming', desc: 'Continuous AI-paired sessions on production code. Faster iteration on tough refactors and complex business logic.', tags: ['Pair Prog', 'Velocity', 'Quality'] },
+          ].map(item => (
+            <div class="glass tilt-card reveal-scale" style="border-radius: 16px; padding: 26px; position: relative;">
+              <div style="font-size: 28px; margin-bottom: 14px;">{item.icon}</div>
+              <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 10px; font-family: 'Space Grotesk', sans-serif;">{item.title}</h3>
+              <p style="font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 16px;">{item.desc}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                {item.tags.map(t => (
+                  <span style="background: color-mix(in srgb, var(--brand-bond) 10%, transparent); border: 1px solid color-mix(in srgb, var(--brand-bond) 25%, transparent); color: var(--brand-bond); border-radius: 4px; padding: 3px 9px; font-size: 11px; font-weight: 500;">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="glass reveal" style="border-radius: 18px; padding: 32px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap; background: linear-gradient(135deg, color-mix(in srgb, var(--brand-1) 4%, transparent), color-mix(in srgb, var(--brand-bond) 4%, transparent));">
+          <div style="font-size: 48px;">🚀</div>
+          <div style="flex: 1; min-width: 280px;">
+            <h3 style="font-size: 20px; font-weight: 800; margin-bottom: 6px; font-family: 'Space Grotesk', sans-serif;">3× faster shipping with AI workflows.</h3>
+            <p style="color: var(--text-2); font-size: 14px; line-height: 1.6;">
+              Features that used to take a week ship in 2 days. Complex refactors that took a sprint happen in an afternoon.
+              This site itself was built primarily through AI-paired development.
+            </p>
+          </div>
+          <a href="/blog" class="btn-primary">Read my AI articles →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="reveal" style="margin-bottom: 48px;">
+          <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Security Engineering</div>
+          <h2 style="font-size: clamp(32px, 4vw, 48px); font-family: 'Space Grotesk', sans-serif;">Security Expertise</h2>
+          <p style="color: var(--text-2); margin-top: 12px; max-width: 600px;">
+            Working in insurtech demands production-grade security. I implement industry best practices across all layers of the iOS stack.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+          {security.map(s => (
+            <div class="glass tilt-card reveal-scale" style="border-radius: 14px; padding: 22px;">
+              <div style="font-size: 24px; margin-bottom: 12px;">{s.icon}</div>
+              <div style="font-size: 15px; font-weight: 700; margin-bottom: 8px;">{s.title}</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.65;">{s.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & CONTACT -->
+    <section style="padding: 80px 48px; border-top: 1px solid var(--border-1);">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <div class="glass reveal-left" style="border-radius: 16px; padding: 32px;">
+            <div style="font-size: 11px; color: var(--brand-1); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Education</div>
+            <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 6px;">Bachelor of Science · Computer Science</h3>
+            <p style="color: var(--text-2);">University of Sargodha, Gujranwala Campus</p>
+            <p style="color: var(--text-3); font-size: 13px; margin-top: 4px; font-family: 'JetBrains Mono', monospace;">2014 — 2018</p>
+          </div>
+          <div class="glass reveal-right" style="border-radius: 16px; padding: 32px;">
+            <div style="font-size: 11px; color: var(--brand-2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Let's Connect</div>
+            <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 12px;">Open to new opportunities</h3>
+            <a href="mailto:arslan@brainandbricks.com" style="display: block; color: var(--brand-1); font-weight: 600; margin-bottom: 8px;">arslan@brainandbricks.com</a>
+            <a href="tel:+923007148373" style="display: block; color: var(--text-2); font-size: 13px; margin-bottom: 4px;">📞 +92 300 7148373</a>
+            <a href="https://github.com/arslanbutt300" target="_blank" style="display: inline-block; color: var(--text-2); font-size: 13px; margin-right: 12px;">GitHub</a>
+            <a href="#" style="display: inline-block; color: var(--text-2); font-size: 13px;">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

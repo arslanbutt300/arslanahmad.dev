@@ -2,38 +2,66 @@
 const year = new Date().getFullYear();
 ---
 
-<footer
-  style="
-    padding: 32px 48px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  "
->
-  <div style="font-size: 13px; color: var(--text-3);">
-    © {year} Arslan Ahmad ·
-    <span style="color: var(--accent);">arslanahmad.dev</span>
+<footer style="padding: 64px 48px 40px; border-top: 1px solid var(--border-1); position: relative; margin-top: 80px;">
+  <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+    <div>
+      <a href="/" style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <svg width="36" height="36" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="footTop" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#A39BFF"/><stop offset="100%" stop-color="#7268D6"/></linearGradient>
+            <linearGradient id="footLeft" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7268D6"/><stop offset="100%" stop-color="#4A41A8"/></linearGradient>
+            <linearGradient id="footRight" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E8A578"/><stop offset="100%" stop-color="#B47550"/></linearGradient>
+          </defs>
+          <g transform="translate(20, 18)">
+            <polygon points="30,0 60,15 30,30 0,15" fill="url(#footTop)"/>
+            <polygon points="0,15 30,30 30,65 0,50" fill="url(#footLeft)"/>
+            <text x="8" y="48" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#fff" opacity="0.95" transform="skewY(-26.5)">&lt;/&gt;</text>
+            <polygon points="30,30 60,15 60,50 30,65" fill="url(#footRight)"/>
+            <circle cx="30" cy="0" r="3.5" fill="#34d399"/>
+          </g>
+        </svg>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800;">
+          <span class="gradient-text-1">brain</span><span style="color: var(--text-3); font-weight: 300;">&amp;</span><span class="gradient-text-2">bricks</span>
+        </span>
+      </a>
+      <p style="color: var(--text-2); font-size: 13px; line-height: 1.7; max-width: 320px;">
+        Code and concrete, designed to last. A duo studio shipping iOS apps and ensuring structural quality.
+      </p>
+    </div>
+
+    <div>
+      <div style="font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600;">Studio</div>
+      <a href="/#about" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">About</a>
+      <a href="/#projects" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">Projects</a>
+      <a href="/#contact" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">Contact</a>
+    </div>
+
+    <div>
+      <div style="font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600;">Team</div>
+      <a href="/arslan" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">Arslan · Principal iOS Engineer</a>
+      <a href="/bilal" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">Bilal · Sr QC Inspector</a>
+      <a href="/blog" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">Blog</a>
+    </div>
+
+    <div>
+      <div style="font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; font-weight: 600;">Connect</div>
+      <a href="mailto:hello@brainandbricks.com" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">hello@brainandbricks.com</a>
+      <a href="https://github.com/arslanbutt300" target="_blank" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">GitHub</a>
+      <a href="#" class="footer-link" style="display: block; font-size: 13px; color: var(--text-2); margin-bottom: 8px;">LinkedIn</a>
+    </div>
   </div>
 
-  <div style="display: flex; gap: 20px; align-items: center;">
-    {[
-      { label: 'GitHub', href: 'https://github.com/arslanbutt300' },
-      { label: 'LinkedIn', href: '#' },
-      { label: 'Twitter', href: '#' },
-      { label: 'hello@arslanahmad.dev', href: 'mailto:hello@arslanahmad.dev' },
-    ].map(link => (
-      <a
-        href={link.href}
-        style="font-size: 12px; color: var(--text-3); transition: color 0.2s;"
-        class="footer-link"
-      >
-        {link.label}
-      </a>
-    ))}
+  <div style="max-width: 1200px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--border-1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+    <div style="font-size: 12px; color: var(--text-3);">
+      © {year} <span class="gradient-text-1">Brain &amp; Bricks</span> · <em style="font-style: italic;">Code and concrete, designed to last.</em>
+    </div>
+    <div style="font-size: 11px; color: var(--text-3); letter-spacing: 1px;">
+      <span class="pulse-dot" style="display: inline-block; vertical-align: middle; margin-right: 6px;"></span>
+      Available for new work
+    </div>
   </div>
 </footer>
 
 <style>
-  .footer-link:hover { color: var(--accent) !important; }
+  .footer-link:hover { color: var(--brand-1) !important; }
 </style>
