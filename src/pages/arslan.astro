@@ -109,7 +109,29 @@ const security = [
 <BaseLayout
   title="Arslan Ahmad — Principal iOS Engineer · Brain & Bricks"
   description="Principal iOS Engineer with 6+ years of experience. Currently shipping FootSteps and enterprise iOS work. AI-first developer. Co-founder of Brain & Bricks."
+  image="/arslan-hero.jpg"
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Arslan Ahmad",
+      "jobTitle": "Principal iOS Engineer",
+      "url": "https://brainandbricks.com/arslan",
+      "image": "https://brainandbricks.com/arslan-hero.jpg",
+      "description": "Principal iOS Engineer with 6+ years experience. Shipped 12+ iOS apps. Co-founder of Brain & Bricks studio.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Brain & Bricks",
+        "url": "https://brainandbricks.com"
+      },
+      "knowsAbout": ["iOS Development", "Swift", "SwiftUI", "Xcode", "Mobile Engineering", "AI-assisted development"],
+      "sameAs": [
+        "https://github.com/arslanbutt300",
+        "https://www.linkedin.com/in/arslan-ahmad-76623a200"
+      ]
+    })} />
+  </Fragment>
   <Nav />
 
   <main style="padding-top: 68px;">

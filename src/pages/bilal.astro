@@ -89,6 +89,23 @@ const credentials = [
   title="Muhammad Bilal — Sr Quality Inspector · Brain & Bricks"
   description="Sr Quality Inspector at Exeed Precast, Abu Dhabi. 12+ years across UAE and Bahrain in precast concrete, materials testing, and structural site supervision. Co-founder of Brain & Bricks."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Bilal",
+      "jobTitle": "Sr Quality Inspector",
+      "url": "https://brainandbricks.com/bilal",
+      "description": "Sr Quality Inspector with 12+ years in precast concrete QC across UAE and Bahrain. Co-founder of Brain & Bricks.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Exeed Precast",
+        "address": { "@type": "PostalAddress", "addressLocality": "Abu Dhabi", "addressCountry": "AE" }
+      },
+      "knowsAbout": ["Precast QC", "Structural Inspection", "Concrete Materials Testing", "Site Supervision", "UAE Construction"],
+      "sameAs": ["https://brainandbricks.com"]
+    })} />
+  </Fragment>
   <Nav />
 
   <main style="padding-top: 68px;">

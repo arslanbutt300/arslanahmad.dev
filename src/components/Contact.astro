@@ -17,92 +17,18 @@
       </p>
     </div>
 
-    <!-- Contact form (Formspree — replace YOUR_FORM_ID) -->
-    <form
-      class="reveal"
-      action="https://formspree.io/f/YOUR_FORM_ID"
-      method="POST"
-      style="display: flex; flex-direction: column; gap: 16px; text-align: left;"
-    >
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div>
-          <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Arslan Ahmad"
-            required
-            style="
-              width: 100%;
-              background: var(--bg-1);
-              border: 1px solid var(--border-1);
-              border-radius: 8px;
-              padding: 12px 14px;
-              font-size: 14px;
-              color: var(--text-1);
-              outline: none;
-              transition: border-color 0.2s;
-              font-family: inherit;
-            "
-            class="form-input"
-          />
-        </div>
-        <div>
-          <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="hello@example.com"
-            required
-            style="
-              width: 100%;
-              background: var(--bg-1);
-              border: 1px solid var(--border-1);
-              border-radius: 8px;
-              padding: 12px 14px;
-              font-size: 14px;
-              color: var(--text-1);
-              outline: none;
-              transition: border-color 0.2s;
-              font-family: inherit;
-            "
-            class="form-input"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label style="font-size: 12px; color: var(--text-2); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">Message</label>
-        <textarea
-          name="message"
-          placeholder="Tell me about your project..."
-          rows="5"
-          required
-          style="
-            width: 100%;
-            background: var(--bg-1);
-            border: 1px solid var(--border-1);
-            border-radius: 8px;
-            padding: 12px 14px;
-            font-size: 14px;
-            color: var(--text-1);
-            outline: none;
-            transition: border-color 0.2s;
-            font-family: inherit;
-            resize: vertical;
-          "
-          class="form-input"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
+    <div class="reveal" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <a
+        href="mailto:hello@brainandbricks.com?subject=Project%20Inquiry"
         class="btn-primary"
-        style="border: none; cursor: pointer; font-family: inherit; width: 100%; justify-content: center; padding: 16px 28px; font-size: 14px; font-weight: 700;"
+        style="text-decoration: none; padding: 16px 36px; font-size: 15px; font-weight: 700; font-family: inherit;"
       >
-        Send Message →
-      </button>
-    </form>
+        Send Us an Email →
+      </a>
+      <p style="font-size: 13px; color: var(--text-3); margin: 0;">
+        Opens your email app · We reply within 24 hours
+      </p>
+    </div>
 
     <div class="reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 48px; flex-wrap: wrap;">
       {[

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block the transparent cutout PNG from image search
+Disallow: /arslan-cutout.png
+
+Sitemap: https://brainandbricks.com/sitemap-index.xml

@@ -10,7 +10,38 @@ import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Brain & Bricks — Arslan Ahmad & Muhammad Bilal"
+  description="Brain & Bricks — a duo studio by Arslan Ahmad (Principal iOS Engineer) and Muhammad Bilal (Sr QC Inspector). iOS apps, precast quality control, and full project builds."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Brain & Bricks",
+      "url": "https://brainandbricks.com",
+      "logo": "https://brainandbricks.com/favicon.svg",
+      "description": "A duo studio by Arslan Ahmad and Muhammad Bilal. iOS development meets structural QC inspection.",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Arslan Ahmad",
+          "jobTitle": "Principal iOS Engineer",
+          "url": "https://brainandbricks.com/arslan"
+        },
+        {
+          "@type": "Person",
+          "name": "Muhammad Bilal",
+          "jobTitle": "Sr Quality Inspector",
+          "url": "https://brainandbricks.com/bilal"
+        }
+      ],
+      "sameAs": [
+        "https://github.com/arslanbutt300",
+        "https://www.linkedin.com/in/arslan-ahmad-76623a200"
+      ]
+    })} />
+  </Fragment>
   <Nav />
   <main>
     <Hero />
