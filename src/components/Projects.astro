@@ -15,6 +15,26 @@ const projects = [
   },
   {
     featured: false,
+    tag: '🏥 Healthcare',
+    side: 'brain',
+    title: 'Healthcare Platform',
+    subtitle: 'iOS App + Website · Under NDA',
+    description: 'End-to-end build for a healthcare provider — a patient-facing iOS app and a fast, accessible marketing website. Appointment booking, service info, and clean UX. Client details under NDA.',
+    badges: ['iOS', 'Web', 'UI/UX', 'NDA'],
+    links: [{ label: 'Start a build →', href: '/#contact' }],
+  },
+  {
+    featured: false,
+    tag: '🏥 Healthcare',
+    side: 'mortar',
+    title: 'Healthcare Social',
+    subtitle: 'Social Media Management · Under NDA',
+    description: 'Ongoing social media management for a healthcare client — content strategy, creation, and scheduling across platforms to grow reach and patient engagement. Client details under NDA.',
+    badges: ['Social', 'Content', 'Strategy', 'NDA'],
+    links: [{ label: 'Work with us →', href: '/#contact' }],
+  },
+  {
+    featured: false,
     tag: '🔐 Under NDA',
     side: 'brain',
     title: 'Enterprise iOS',
@@ -22,16 +42,6 @@ const projects = [
     description: 'Enterprise iOS work for financial and insurance clients in East & Central Africa. Security-hardened apps, encryption, and SDK integrations.',
     badges: ['Swift', 'Security', 'NDA'],
     links: [{ label: 'Meet Arslan →', href: '/arslan' }],
-  },
-  {
-    featured: false,
-    tag: '🚀 Coming Soon',
-    side: 'brain',
-    title: 'New iOS App',
-    subtitle: 'In Planning',
-    description: 'A new personal iOS project in early planning. Want to be the first to know? Subscribe via the contact form below.',
-    badges: ['SwiftUI', 'AI', 'Coming'],
-    links: [{ label: 'Get Notified →', href: '/#contact' }],
   },
   {
     featured: false,
@@ -44,6 +54,9 @@ const projects = [
     links: [{ label: 'Meet Bilal →', href: '/bilal' }],
   },
 ];
+
+const featured = projects.find((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
 ---
 
 <section id="projects" style="padding: 120px 48px; border-top: 1px solid var(--border-1);">
@@ -56,64 +69,51 @@ const projects = [
         Things we've <span class="gradient-text">built.</span>
       </h2>
       <p style="color: var(--text-2); font-size: 16px; margin-top: 14px; line-height: 1.7;">
-        Apps shipped to the App Store, structures inspected, and projects that ship together.
+        Apps shipped, sites launched, brands managed, and structures inspected — work we deliver end to end.
       </p>
     </div>
 
-    <div class="projects-grid" style="display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 18px;">
-      {projects.map((p, i) => (
-        <div
-          class={`glass tilt-card reveal-scale project-card-${p.featured ? 'featured' : 'small-' + i}`}
-          style="
-            border-radius: 18px;
-            padding: 28px;
-            position: relative;
-            overflow: hidden;
-          "
-        >
-          <div style={`
-            position: absolute; top: -40px; right: -40px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, ${p.side === 'brain' ? 'var(--mesh-1)' : 'var(--mesh-2)'} 0%, transparent 70%);
-            filter: blur(30px);
-            pointer-events: none;
-          `}></div>
+    <!-- Featured card (full width) -->
+    {featured && (
+      <div class="glass tilt-card reveal-scale project-featured" style="border-radius: 18px; padding: 28px; position: relative; overflow: hidden; margin-bottom: 18px;">
+        <div style={`position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, ${featured.side === 'brain' ? 'var(--mesh-1)' : 'var(--mesh-2)'} 0%, transparent 70%); filter: blur(30px); pointer-events: none;`}></div>
+        <div style="position: relative;">
+          <div style={`display: inline-flex; background: color-mix(in srgb, ${featured.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 12%, transparent); border: 1px solid color-mix(in srgb, ${featured.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 25%, transparent); border-radius: 6px; padding: 4px 10px; font-size: 11px; color: ${featured.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 16px; font-weight: 600;`}>{featured.tag}</div>
+          <h3 style="font-size: 32px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">{featured.title}</h3>
+          <div style={`font-size: 13px; color: ${featured.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 14px; font-weight: 500;`}>{featured.subtitle}</div>
+          <p style="font-size: 15px; color: var(--text-2); line-height: 1.7; margin-bottom: 18px; max-width: 600px;">{featured.description}</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px;">
+            {featured.badges.map(b => (
+              <span style="background: var(--bg-3); border: 1px solid var(--border-1); border-radius: 4px; padding: 3px 8px; font-size: 10px; color: var(--text-3);">{b}</span>
+            ))}
+          </div>
+          <div style="display: flex; gap: 16px;">
+            {featured.links.map(link => (
+              <a href={link.href} target={link.href.startsWith('/') ? '_self' : '_blank'} style={`font-size: 12px; color: ${featured.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; font-weight: 600;`}>{link.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    )}
 
+    <!-- Remaining cards (responsive grid) -->
+    <div class="projects-grid">
+      {rest.map((p) => (
+        <div class="glass tilt-card reveal-scale" style="border-radius: 18px; padding: 28px; position: relative; overflow: hidden;">
+          <div style={`position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: radial-gradient(circle, ${p.side === 'brain' ? 'var(--mesh-1)' : 'var(--mesh-2)'} 0%, transparent 70%); filter: blur(30px); pointer-events: none;`}></div>
           <div style="position: relative;">
-            <div style={`
-              display: inline-flex;
-              background: color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 12%, transparent);
-              border: 1px solid color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 25%, transparent);
-              border-radius: 6px;
-              padding: 4px 10px;
-              font-size: 11px;
-              color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'};
-              margin-bottom: 16px;
-              font-weight: 600;
-            `}>{p.tag}</div>
-
-            <h3 style={`font-size: ${p.featured ? '32px' : '20px'}; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;`}>
-              {p.title}
-            </h3>
-            <div style={`font-size: 13px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 14px; font-weight: 500;`}>
-              {p.subtitle}
-            </div>
-
-            <p style={`font-size: ${p.featured ? '15px' : '13px'}; color: var(--text-2); line-height: 1.7; margin-bottom: 18px; ${p.featured ? 'max-width: 600px;' : ''}`}>
-              {p.description}
-            </p>
-
+            <div style={`display: inline-flex; background: color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 12%, transparent); border: 1px solid color-mix(in srgb, ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'} 25%, transparent); border-radius: 6px; padding: 4px 10px; font-size: 11px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 16px; font-weight: 600;`}>{p.tag}</div>
+            <h3 style="font-size: 20px; font-weight: 800; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px;">{p.title}</h3>
+            <div style={`font-size: 13px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; margin-bottom: 14px; font-weight: 500;`}>{p.subtitle}</div>
+            <p style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 18px;">{p.description}</p>
             <div style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px;">
               {p.badges.map(b => (
                 <span style="background: var(--bg-3); border: 1px solid var(--border-1); border-radius: 4px; padding: 3px 8px; font-size: 10px; color: var(--text-3);">{b}</span>
               ))}
             </div>
-
             <div style="display: flex; gap: 16px;">
               {p.links.map(link => (
-                <a href={link.href} target={link.href.startsWith('/') ? '_self' : '_blank'} style={`font-size: 12px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; font-weight: 600;`}>
-                  {link.label}
-                </a>
+                <a href={link.href} target={link.href.startsWith('/') ? '_self' : '_blank'} style={`font-size: 12px; color: ${p.side === 'brain' ? 'var(--brand-1)' : 'var(--brand-2)'}; font-weight: 600;`}>{link.label}</a>
               ))}
             </div>
           </div>
@@ -124,18 +124,14 @@ const projects = [
 </section>
 
 <style>
-  .project-card-featured { grid-column: 1 / -1; grid-row: 1; }
-  .project-card-small-1 { grid-column: 1; grid-row: 2; }
-  .project-card-small-2 { grid-column: 2; grid-row: 2; }
-  .project-card-small-3 { grid-column: 3; grid-row: 2; }
-  @media (max-width: 900px) {
-    .projects-grid { grid-template-columns: 1fr !important; }
-    .project-card-featured,
-    .project-card-small-1,
-    .project-card-small-2,
-    .project-card-small-3 {
-      grid-column: 1 !important;
-      grid-row: auto !important;
-    }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    align-items: stretch;
+  }
+  .projects-grid > div { height: 100%; }
+  @media (max-width: 620px) {
+    .projects-grid { grid-template-columns: 1fr; }
   }
 </style>
