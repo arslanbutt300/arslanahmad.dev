@@ -41,7 +41,7 @@ const bg = Buffer.from(
     <rect x="60" y="250" width="48" height="3" rx="2" fill="#00D084"/>
     <!-- descriptor -->
     <text x="60" y="300" font-family="Arial, sans-serif" font-size="16" fill="#8b9e94">
-      6+ years · 12+ apps shipped · AI-first developer
+      8+ years · 12+ apps shipped · AI-first developer
     </text>
     <!-- domain -->
     <text x="60" y="${H - 44}" font-family="Arial, sans-serif" font-size="15" fill="#4a6357">
